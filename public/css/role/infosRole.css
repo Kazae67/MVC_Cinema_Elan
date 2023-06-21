@@ -1,0 +1,94 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    height: 100vh;
+    margin-top: 50px;
+}
+
+.container .content {
+    background-color: #fff;
+    border: 3px solid #000000;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 1000px; 
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.role-card-detail {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 10px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto; 
+    margin-left:5px;
+    box-sizing: border-box; 
+}
+
+.role-card-detail span {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.film-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.film-item {
+    flex-basis: calc(33.33% - 10px); 
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.film-container {
+    position: relative;
+    text-align: center;
+    height: 305px;
+    width: 100%;
+    background-color: #fff;
+    border: 3px solid #000000;
+    border-radius: 10px;
+}
+
+.film-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.film-info {
+    margin-right: 5px;
+    width: 100%;
+}
+
+.film-title {
+    position: absolute;
+    color: transparent;
+    left: 0;
+    width: 0%;
+    padding: 8px;
+    border-radius: 5px 5px 50px 50px;
+    background-color: rgba(0, 0, 0, 0);
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: transform 0.3s ease, background-color 0.1s ease, color 0.8s ease, box-shadow 1.5s ease, border-radius 1s ease, width 1s ease;
+    transform: translateY(-691%);
+    z-index: 1;
+}
+
+.film-container:hover .film-title {
+    transform: translateY(-100%);
+    width: 100%;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow: 0px 4px 15px 4px rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}

@@ -1,0 +1,86 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin-top: 50px;
+}
+
+.container .content {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border:solid 3px black;
+}
+
+.film-card-detail {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.film-info-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    max-width: 600px;
+    word-wrap: break-word;
+}
+
+.film-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.film-info-left {
+    flex: 1;
+    text-align: left;
+    padding-left: 50px;
+    
+}
+
+.film-info-right {
+    flex: 1;
+    text-align: left;
+    padding-left: 50px; 
+}
+
+.film-info-bottom {
+    margin-top: 20px;
+}
+
+.film-info-full {
+    display: block;
+    margin-bottom: 10px;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.film-info-image {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.image-film-xl {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 10px;
+    border: 3px solid #000000;
+    max-height: 450px;
+}
+
+.casting-info {
+    text-align: center;
+    margin-top: 20px;
+}
+.casting-list {
+    margin-top: 10px;
+    padding-left: 0;
+}
+.casting-list li {
+    margin-bottom: 0px;
+}
