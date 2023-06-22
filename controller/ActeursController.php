@@ -12,7 +12,8 @@ class ActeursController {
 
         $query = "
             SELECT prenom, nom, sexe, DATE_FORMAT(birthdate, '%d-%m-%Y') AS birthdate, id_acteur, path_img_acteur
-            FROM acteur 
+            FROM acteur a
+            INNER JOIN personne on personne.id_personne = a.id_personne 
         ";
 
         $request = $pdo->query($query);
@@ -26,8 +27,10 @@ class ActeursController {
     
         $query_acteur_infos = "
             SELECT a.id_acteur, a.prenom, a.nom, a.sexe, DATE_FORMAT(a.birthdate, '%d/%m/%Y') AS birthdate, a.biographie
-            FROM acteur a 
-            WHERE a.id_acteur = :id_acteur
+            FROM acteur a, personne p
+            WHERE a.id_personne = p.id_personne
+            AND a.id_acteur = :id
+            
         ";
         $request_acteur_infos = $pdo->prepare($query_acteur_infos);
         $request_acteur_infos->execute(["id_acteur" => $id_acteur]);
