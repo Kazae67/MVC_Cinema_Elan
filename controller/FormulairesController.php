@@ -71,7 +71,7 @@ class FormulairesController {
             require "view/formulaires/ajouterActeur.php";
         }
     }
-    
+
     // Ajouter ROLE
     public function ajouterRole() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -202,13 +202,23 @@ class FormulairesController {
             }
 
             $pdo = Connect::Connexion();
-            $query = "INSERT INTO realisateur (prenom, nom, sexe, birthdate, biographie, path_img_realisateur) VALUES (:prenom, :nom, :sexe, :birthdate, :biographie, :image)";
-            $insertRealisateurStatement = $pdo->prepare($query);
-            $insertRealisateurStatement->execute([
+            $query = "INSERT INTO personne (prenom, nom, sexe, birthdate) VALUES (:prenom, :nom, :sexe, :birthdate)";
+            $insertPersonneStatement = $pdo->prepare($query);
+            $insertPersonneStatement->execute([
                 "prenom" => $prenom,
                 "nom" => $nom,
                 "sexe" => $sexe,
-                "birthdate" => $birthdate,
+                "birthdate" => $birthdate
+            ]);
+
+            // Récupérer l'ID de la personne insérée
+            $personneId = $pdo->lastInsertId();
+
+            // Insérer le réalisateur avec l'ID de la personne associée
+            $insertRealisateurQuery = "INSERT INTO realisateur (id_personne, biographie, path_img_realisateur) VALUES (:personne_id, :biographie, :image)";
+            $insertRealisateurStatement = $pdo->prepare($insertRealisateurQuery);
+            $insertRealisateurStatement->execute([
+                "personne_id" => $personneId,
                 "biographie" => $biographie,
                 "image" => $newImageFileName
             ]);
