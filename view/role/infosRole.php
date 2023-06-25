@@ -14,7 +14,7 @@ $imagePath = 'public/images/imgFilms/';
                     <?php if ($acteur && isset($acteur["prenom"]) && isset($acteur["nom"])): ?>
                         <span class="film-info"><b>Acteur :</b> 
                             <a href="index.php?action=infosActeur&id=<?= $acteur['id_acteur'] ?>">
-                                <?= $acteur["prenom"] . " " . $acteur["nom"] ?>
+                                <?= $acteur["nom"] . " " . $acteur["prenom"] ?>
                             </a>
                         </span>
                         <!-- Si l'acteur n'est pas trouvé, affiche un message d'erreur -->
