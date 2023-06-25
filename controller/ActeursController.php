@@ -26,10 +26,10 @@ class ActeursController {
         $pdo = Connect::Connexion();
     
         $query_acteur_infos = "
-            SELECT a.id_acteur, a.prenom, a.nom, a.sexe, DATE_FORMAT(a.birthdate, '%d/%m/%Y') AS birthdate, a.biographie
-            FROM acteur a, personne p
-            WHERE a.id_personne = p.id_personne
-            AND a.id_acteur = :id
+        SELECT a.id_acteur, p.prenom, p.nom, p.sexe, DATE_FORMAT(p.birthdate, '%d/%m/%Y') AS birthdate, a.biographie
+        FROM acteur a
+        INNER JOIN personne p ON p.id_personne = a.id_personne
+        WHERE a.id_acteur = :id_acteur
             
         ";
         $request_acteur_infos = $pdo->prepare($query_acteur_infos);
