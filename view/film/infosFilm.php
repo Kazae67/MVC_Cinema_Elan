@@ -28,18 +28,14 @@ $imageSrc = $imagePath . $film["path_img_film"];
                     </span>
                 </div>
                 <div class="film-info-line">
-                    <span class="film-info-left"><b>Réalisateur :</b> <a href="index.php?action=infosRealisateur&id=<?= $film['id_realisateur'] ?>"><?= $film["rea_prenom"] . " " . $film["rea_nom"] ?></a></span>
+                    <span class="film-info-left"><b>Réalisateur :</b> <a href="index.php?action=infosRealisateur&id=<?= $film['id_realisateur'] ?>"><?= $film["rea_nom"] . " " . $film["rea_prenom"] ?></a></span>
                     <span class="film-info-right"><b>Genre :</b> <a href="index.php?action=infosGenre&id=<?= $film['genre_id'] ?>"><?= ucfirst($film["genre_name"]) ?></a></span>
                 </div>
                 <div class="film-info-line">
                     <span class="film-info-left"><b>Date de sortie :</b> <?= $film["date_sortie"] ?></span>
                     <span class="film-info-right"><b>Durée du film :</b>
                         <?php
-                        $duree = $film["duree"];
-                        $matches = [];
-                        preg_match('/(\d+)\s*h\s*(\d+)/', $duree, $matches);
-                        $hours = isset($matches[1]) ? (int) $matches[1] : 0;
-                        $minutes = isset($matches[2]) ? (int) $matches[2] : 0;
+                        $minutes = $film["duree"];
                         $duree = date('H:i', mktime(0, $minutes));
                         echo $duree . " mins";
                         ?>

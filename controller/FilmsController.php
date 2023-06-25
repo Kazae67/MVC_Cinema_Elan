@@ -27,7 +27,7 @@ class FilmsController {
         $pdo = Connect::Connexion();
     
         $query_film = "
-        SELECT realisateur.id_realisateur, film.id_film, film.titre_film, film.date_sortie, TIME_FORMAT(SEC_TO_TIME(film.duree*60), '%k h %i') AS duree, film.synopsis, film.note, personne.prenom AS rea_prenom, personne.nom AS rea_nom, film.path_img_film, film.genre_id, genre.genre_name
+        SELECT realisateur.id_realisateur, film.id_film, film.titre_film, film.date_sortie, film.duree, film.synopsis, film.note, personne.prenom AS rea_prenom, personne.nom AS rea_nom, film.path_img_film, film.genre_id, genre.genre_name
         FROM film
         INNER JOIN realisateur ON film.realisateur_id = realisateur.id_realisateur
         INNER JOIN personne ON realisateur.id_personne = personne.id_personne
