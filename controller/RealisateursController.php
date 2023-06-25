@@ -11,8 +11,9 @@ class RealisateursController {
         $pdo = Connect::Connexion();
         
         $query = "
-            SELECT prenom, nom, sexe, birthdate, id_realisateur, path_img_realisateur
-            FROM realisateur
+            SELECT prenom, nom, sexe, DATE_FORMAT(birthdate, '%d-%m-%Y') AS birthdate, id_realisateur, path_img_realisateur
+            FROM realisateur r
+            INNER JOIN personne on personne.id_personne = r.id_personne 
         ";
 
         $request = $pdo->query($query);
@@ -26,9 +27,10 @@ class RealisateursController {
         $pdo = Connect::Connexion();
 
         $query_realisateur_infos = "
-            SELECT DISTINCT rea.id_realisateur, rea.prenom, rea.nom, rea.birthdate, rea.path_img_realisateur, rea.biographie
-            FROM realisateur rea
-            WHERE rea.id_realisateur = :id_realisateur
+            SELECT r.id_realisateur, p.prenom, p.nom, p.sexe, DATE_FORMAT(p.birthdate, '%d/%m/%Y') AS birthdate, r.biographie
+            FROM realisateur r
+            INNER JOIN personne p ON p.id_personne = r.id_personne
+            WHERE r.id_realisateur = :id_realisateur
         ";
         
         // Récupère les informations du réalisateur
