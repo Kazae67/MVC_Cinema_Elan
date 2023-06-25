@@ -14,43 +14,55 @@ class FormulairesController {
             $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_SPECIAL_CHARS);
             $birthdate = filter_input(INPUT_POST, "birthdate", FILTER_SANITIZE_SPECIAL_CHARS);
             $biographie = filter_input(INPUT_POST, "biographie", FILTER_SANITIZE_SPECIAL_CHARS);
-
+    
             // Vérification de la présence de l'image
             if (!isset($_FILES['image']) || $_FILES['image']['error'] === UPLOAD_ERR_NO_FILE) {
                 header("Location: index.php?action=ajouterActeur&error=Veuillez sélectionner une image");
                 exit;
             }
-
+    
             // Traitement de l'image
             $file = $_FILES["image"];
             $filename = $file["name"];
             $filePathTemporaire = $file["tmp_name"];
-
+    
             $extension = pathinfo($filename, PATHINFO_EXTENSION);
             $newImageFileName = uniqid() . "." . $extension;
-
+    
             $destinationPath = "public/images/imgActeurs/";
             $destinationFile = $destinationPath . $newImageFileName;
-
-             // Erreur / Déplacement de l'image vers le dossier de destination
+    
+            // Erreur / Déplacement de l'image vers le dossier de destination
             if (!move_uploaded_file($filePathTemporaire, $destinationFile)) {
                 header("Location: index.php?action=ajouterActeur&error=Une erreur s'est produite lors du téléchargement de l'image");
                 exit;
             }
-
+    
             // Insertion des données dans la base de données
             $pdo = Connect::Connexion();
-            $query = "INSERT INTO acteur (prenom, nom, sexe, birthdate, biographie, path_img_acteur) VALUES (:prenom, :nom, :sexe, :birthdate, :biographie, :image)";
-            $insertActeurStatement = $pdo->prepare($query);
-            $insertActeurStatement->execute([
+    
+            // Insérer la personne
+            $insertPersonneQuery = "INSERT INTO personne (prenom, nom, sexe, birthdate) VALUES (:prenom, :nom, :sexe, :birthdate)";
+            $insertPersonneStatement = $pdo->prepare($insertPersonneQuery);
+            $insertPersonneStatement->execute([
                 "prenom" => $prenom,
                 "nom" => $nom,
                 "sexe" => $sexe,
-                "birthdate" => $birthdate,
+                "birthdate" => $birthdate
+            ]);
+    
+            // Récupérer l'ID de la personne insérée
+            $personneId = $pdo->lastInsertId();
+    
+            // Insérer l'acteur avec l'ID de la personne associée
+            $insertActeurQuery = "INSERT INTO acteur (id_personne, biographie, path_img_acteur) VALUES (:personne_id, :biographie, :image)";
+            $insertActeurStatement = $pdo->prepare($insertActeurQuery);
+            $insertActeurStatement->execute([
+                "personne_id" => $personneId,
                 "biographie" => $biographie,
                 "image" => $newImageFileName
             ]);
-
+    
             // Redirection vers la liste des acteurs
             header("Location: index.php?action=listActeurs");
             exit;
@@ -59,7 +71,7 @@ class FormulairesController {
             require "view/formulaires/ajouterActeur.php";
         }
     }
-
+    
     // Ajouter ROLE
     public function ajouterRole() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -268,7 +280,8 @@ class FormulairesController {
             $selectGenresStatement = $pdo->query("SELECT * FROM genre");
             $genres = $selectGenresStatement->fetchAll();
 
-            $selectRealisateursStatement = $pdo->query("SELECT * FROM realisateur");
+            $selectRealisateursStatement = $pdo->query("SELECT r.id_realisateur, p.prenom, p.nom FROM realisateur r
+            INNER JOIN personne p ON r.id_personne = p.id_personne");
             $realisateurs = $selectRealisateursStatement->fetchAll();
 
             // Afficher ajouterFilm
