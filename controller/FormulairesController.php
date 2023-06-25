@@ -305,8 +305,9 @@ class FormulairesController {
     
         // Requête pour ACTEUR
         $requestActeur = $pdo->query("
-            SELECT CONCAT(prenom, ' ', nom) AS acteurNomComplet, id_acteur
+            SELECT CONCAT(personne.prenom, ' ', personne.nom) AS acteurNomComplet, acteur.id_acteur
             FROM acteur
+            INNER JOIN personne ON acteur.id_personne = personne.id_personne
         ");
     
         // Requête pour FILM
@@ -348,3 +349,4 @@ class FormulairesController {
         require "view/formulaires/ajouterCasting.php";
     }
 }
+
