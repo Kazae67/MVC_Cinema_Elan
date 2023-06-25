@@ -27,22 +27,25 @@ class FilmsController {
         $pdo = Connect::Connexion();
     
         $query_film = "
-            SELECT titre_film, date_sortie, duree, synopsis, genre_name, rea.prenom AS rea_prenom, rea.nom AS rea_nom, note, path_img_film, id_realisateur, genre_id
-            FROM film f
-            INNER JOIN realisateur rea ON f.realisateur_id = rea.id_realisateur
-            INNER JOIN genre g ON g.id_genre = f.genre_id
-            WHERE f.id_film = :id_film
+        SELECT realisateur.id_realisateur, film.id_film, film.titre_film, film.date_sortie, TIME_FORMAT(SEC_TO_TIME(film.duree*60), '%k h %i') AS duree, film.synopsis, film.note, personne.prenom AS rea_prenom, personne.nom AS rea_nom, film.path_img_film, film.genre_id, genre.genre_name
+        FROM film
+        INNER JOIN realisateur ON film.realisateur_id = realisateur.id_realisateur
+        INNER JOIN personne ON realisateur.id_personne = personne.id_personne
+        INNER JOIN genre ON film.genre_id = genre.id_genre
+        WHERE film.id_film = :id_film
         ";
+
         // Récupère les informations du film
         $request_film = $pdo->prepare($query_film);
         $request_film->execute(["id_film" => $id_film]);
 
         $query_casting = "
-            SELECT prenom, nom, role_name, a.id_acteur, r.id_role
+            SELECT p.prenom, p.nom, role_name, a.id_acteur, r.id_role
             FROM acteur a
             INNER JOIN casting c ON c.acteur_id = a.id_acteur
             INNER JOIN role r ON r.id_role = c.role_id
             INNER JOIN film f ON f.id_film = c.film_id
+            INNER JOIN personne p ON a.id_personne = p.id_personne
             WHERE c.film_id = :id_film
         ";
     

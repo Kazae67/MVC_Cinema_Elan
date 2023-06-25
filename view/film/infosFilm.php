@@ -35,7 +35,11 @@ $imageSrc = $imagePath . $film["path_img_film"];
                     <span class="film-info-left"><b>Date de sortie :</b> <?= $film["date_sortie"] ?></span>
                     <span class="film-info-right"><b>Durée du film :</b>
                         <?php
-                        $minutes = $film["duree"];
+                        $duree = $film["duree"];
+                        $matches = [];
+                        preg_match('/(\d+)\s*h\s*(\d+)/', $duree, $matches);
+                        $hours = isset($matches[1]) ? (int) $matches[1] : 0;
+                        $minutes = isset($matches[2]) ? (int) $matches[2] : 0;
                         $duree = date('H:i', mktime(0, $minutes));
                         echo $duree . " mins";
                         ?>
