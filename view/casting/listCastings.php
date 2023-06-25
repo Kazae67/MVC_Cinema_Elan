@@ -1,7 +1,7 @@
 <!-- temporisation de sortie -->
 <?php
 ob_start();
-/* L'image associée au realisateur est affichée en utilisant les informations du chemin d'accès et du nom de fichier d'image stockées dans les variables. 
+/* L'image associée au réalisateur est affichée en utilisant les informations du chemin d'accès et du nom de fichier d'image stockées dans les variables. 
 L'URL de l'image est générée en concaténant le chemin d'accès et le nom de fichier. */
 $imagePathFilm = 'public/images/imgFilms/';
 $imagePathActeur = 'public/images/imgActeurs/';
@@ -17,8 +17,7 @@ $imagePathRole = 'public/images/imgRoles/';
 <!-- LISTE DES CARDS CASTING -->
 <div class="casting-card-list">
     <?php
-
-    /* Boucle foreach pour itérer sur chaque castings récupéré à partir de l'objet $request->fetchAll(). 
+    /* Boucle foreach pour itérer sur chaque casting récupéré à partir de l'objet $request->fetchAll(). 
     Chaque réalisateur est affiché sous forme de card avec un lien vers les informations détaillées du casting. */
     foreach ($request->fetchAll() as $casting) { ?>
         <div class="casting-container">
@@ -27,7 +26,7 @@ $imagePathRole = 'public/images/imgRoles/';
                     <div class="image-container">
                         <a href="index.php?action=infosActeur&id=<?= $casting['id_acteur'] ?>">
                             <img class="casting-image" src="<?= $imagePathActeur . $casting['path_img_acteur'] ?>" alt="affiche de l'acteur <?= $casting['prenom'] ?>">
-                            <p class="casting-info"><?= $casting['prenom'] ?></p>
+                            <p class="casting-info"><?= $casting['nom'] . ' ' . $casting['prenom'] ?></p>
                         </a>
                     </div>
                 <?php } ?>
@@ -53,7 +52,6 @@ $imagePathRole = 'public/images/imgRoles/';
 </div>
 
 <?php
-
 $content = ob_get_clean();
 $cssLink = '<link rel="stylesheet" href="public/css/casting/listCastings.css">';
 
