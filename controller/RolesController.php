@@ -38,11 +38,11 @@ class RolesController {
 
 
         $query_acteur = "
-            SELECT a.id_acteur, p.prenom, p.nom
-            FROM acteur a
-            INNER JOIN casting c ON a.id_acteur = c.acteur_id
-            INNER JOIN personne p ON a.id_personne = p.id_personne
-            WHERE c.role_id = :id
+        SELECT a.id_acteur, p.prenom, p.nom
+        FROM acteur a
+        INNER JOIN casting c ON a.id_acteur = c.acteur_id
+        INNER JOIN personne p ON a.id_personne = p.id_personne
+        WHERE c.role_id = :id
         ";
 
         // Récupère les informations sur l'acteur associé au rôle spécifié par l'ID du rôle 
