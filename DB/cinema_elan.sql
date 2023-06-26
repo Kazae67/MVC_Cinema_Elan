@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `acteur` (
   PRIMARY KEY (`id_acteur`) USING BTREE,
   KEY `id_personne` (`id_personne`),
   CONSTRAINT `FK_acteur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_elan.acteur : ~33 rows (environ)
 INSERT INTO `acteur` (`id_acteur`, `path_img_acteur`, `biographie`, `id_personne`) VALUES
@@ -132,37 +132,56 @@ CREATE TABLE IF NOT EXISTS `film` (
   `date_sortie` year DEFAULT NULL,
   `duree` int DEFAULT NULL,
   `synopsis` longtext,
-  `genre_id` int DEFAULT NULL,
   `realisateur_id` int DEFAULT NULL,
   `note` int DEFAULT NULL,
   `path_img_film` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
   PRIMARY KEY (`id_film`) USING BTREE,
-  KEY `FK1_movie_genre` (`genre_id`),
   KEY `FK2_movie_director` (`realisateur_id`) USING BTREE,
-  CONSTRAINT `FK1_film_genre` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`id_genre`),
   CONSTRAINT `FK2_film_realisateur` FOREIGN KEY (`realisateur_id`) REFERENCES `realisateur` (`id_realisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_elan.film : ~18 rows (environ)
-INSERT INTO `film` (`id_film`, `titre_film`, `date_sortie`, `duree`, `synopsis`, `genre_id`, `realisateur_id`, `note`, `path_img_film`) VALUES
-	(1, 'Dragonball z : Broly Le super Guerrier', '1993', 152, 'Lorsque le puissant guerrier Saiyan, Broly, est réveillé, Goku et ses amis doivent affronter sa force dévastatrice pour sauver la Terre.', 1, 1, 4, 'Dragonballz.jpg'),
-	(2, 'Interstellar', '2014', 169, 'Dans un futur où la Terre est menacée par une crise alimentaire, un groupe d\'explorateurs se lance dans un voyage interstellaire pour trouver une nouvelle planète habitable.', 3, 2, 2, 'Interstellar.jpg'),
-	(3, 'Harry Potter', '2001', 152, 'Un jeune sorcier découvre qu\'il est le célèbre Harry Potter et entre dans le monde de la magie où il doit affronter le redoutable sorcier, Lord Voldemort.', 5, 3, 5, 'Harry_potter.jpg'),
-	(4, 'Harry Potter II', '2002', 161, 'Harry Potter et ses amis enquêtent sur une série d\'attaques mystérieuses à Poudlard, découvrant l\'existence d\'une redoutable chambre des secrets et affrontant un dangereux monstre qui menace la vie de l\'école.', 5, 3, 5, 'Harry_potter_2.jpg'),
-	(5, 'Harry Potter III', '2005', 144, 'Alors qu\'un dangereux criminel échappe à Azkaban, Harry Potter fait face à de nouveaux mystères et découvre le pouvoir du voyage dans le temps pour sauver ses proches et révéler des vérités sur son passé.', 5, 3, 4, 'Harry_potter_3.jpg'),
-	(6, 'Harry Potter IV', '2005', 157, 'Lorsque Harry Potter participe au dangereux Tournoi des Trois Sorciers, il se retrouve confronté à des épreuves mortelles, des complots sombres et à la résurrection de Lord Voldemort.', 5, 3, 3, 'Harry_potter_4.jpg'),
-	(8, 'Upside Down', '2012', 116, 'Dans un monde où deux planètes coexistent avec des gravités opposées, un homme défie les lois de la physique pour retrouver l\'amour de sa vie, malgré les obstacles et les dangers.', 3, 4, 5, 'Upside_down.jpg'),
-	(9, 'Seul au monde', '2000', 143, 'Après le crash de son avion, un homme se retrouve isolé sur une île déserte, où il doit lutter pour sa survie et trouver un moyen de rentrer chez lui.', 4, 5, 1, 'Seul_au_monde.jpg'),
-	(10, 'Avatar', '2009', 142, 'Parce que l\'atmosphère de Pandora est toxique, les humains ont créé des doubles d\'eux-mêmes, des avatars. Sous cette forme, Jake peut de nouveau marcher.', 5, 6, 5, 'Avatar.jpg'),
-	(11, 'Astérix et Obélix', '2002', 107, 'Cléopâtre, la reine d\'Égypte, décide, pour défier l\'Empereur romain Jules César, de construire en trois mois un palais somptueux en plein désert.', 9, 7, 5, 'Asterix_et_obelix.jpg'),
-	(12, 'Pirates des Caraïbes', '2003', 143, 'Dans la mer des Caraïbes, Jack Sparrow, voit sa vie idyllique basculer le jour où son ennemi, le perfide capitaine Barbossa, lui vole son bateau, le Black Pearl.', 4, 8, 5, 'Pirates_des_caraibes.jpg'),
-	(13, 'Fight club', '1999', 139, 'Le narrateur, sans identité précise, vit seul, travaille seul, dort seul, mange seul ses plateaux-repas pour une personne comme beaucoup d\'autres personnes seules qui connaissent la misère humaine.', 6, 9, 5, 'Fight_club.jpg'),
-	(14, 'Ratatouille', '2007', 111, 'Rémy est un jeune rat qui rêve de devenir un grand chef français. Ni l\'opposition de sa famille, ni le fait d\'être un rongeur dans une profession qui les déteste ne le démotivent.', 7, 10, 4, 'Ratatouille.jpg'),
-	(15, 'L\'homme bicentenaire', '1999', 132, 'En ce début de XXIe siecle, la robotique a fait d\'inportants progrès. La famille Martin peut ainsi faire ll\'acquisition d\'un robot domestique, le NDR-114.', 3, 11, 4, 'Homme_bicentenaire.jpg'),
-	(16, 'Le Roi Lion', '1994', 87, 'Dans la savane d\'Afrique, Simba, un jeu lionceau, fils de Mufasa, découvre son futur royaume, la Terre des Lions sur lequel il régnera.', 7, 12, 5, 'Le_roi_lion.jpg'),
-	(17, 'Le Roi lion 2', '1998', 81, 'Simba et Nala ont maintenant une fille, et rencontre un jeune lion nommé Kovu, ce qu\'elle ne sait pas, c\'est qu\'il est le fils de Zira une servantes de Scar.', 7, 13, 3, 'Le_roi_lion_2.jpg'),
-	(18, 'Metropolis', '2001', 93, 'Metropolis est une mégapole dans uen société  dystopique divisée en une ville haute, où les travailleurs font fonctionner la ville et sont opprimés par la classe dirigeante.', 3, 14, 4, 'Metropolis.png'),
-	(19, 'Scarface', '1983', 170, 'Tony Montana bénéficie d\'une amnistie du gouvernement cubain pour retourner en Floride, il élabore un plan pour élminer un caïd de la pègre.', 8, 15, 5, 'Scarface.jpg');
+INSERT INTO `film` (`id_film`, `titre_film`, `date_sortie`, `duree`, `synopsis`, `realisateur_id`, `note`, `path_img_film`) VALUES
+	(1, 'Dragonball z : Broly Le super Guerrier', '1993', 152, 'Lorsque le puissant guerrier Saiyan, Broly, est réveillé, Goku et ses amis doivent affronter sa force dévastatrice pour sauver la Terre.', 1, 4, 'Dragonballz.jpg'),
+	(2, 'Interstellar', '2014', 169, 'Dans un futur où la Terre est menacée par une crise alimentaire, un groupe d\'explorateurs se lance dans un voyage interstellaire pour trouver une nouvelle planète habitable.', 2, 2, 'Interstellar.jpg'),
+	(3, 'Harry Potter', '2001', 152, 'Un jeune sorcier découvre qu\'il est le célèbre Harry Potter et entre dans le monde de la magie où il doit affronter le redoutable sorcier, Lord Voldemort.', 3, 5, 'Harry_potter.jpg'),
+	(4, 'Harry Potter II', '2002', 161, 'Harry Potter et ses amis enquêtent sur une série d\'attaques mystérieuses à Poudlard, découvrant l\'existence d\'une redoutable chambre des secrets et affrontant un dangereux monstre qui menace la vie de l\'école.', 3, 5, 'Harry_potter_2.jpg'),
+	(5, 'Harry Potter III', '2005', 144, 'Alors qu\'un dangereux criminel échappe à Azkaban, Harry Potter fait face à de nouveaux mystères et découvre le pouvoir du voyage dans le temps pour sauver ses proches et révéler des vérités sur son passé.', 3, 4, 'Harry_potter_3.jpg'),
+	(6, 'Harry Potter IV', '2005', 157, 'Lorsque Harry Potter participe au dangereux Tournoi des Trois Sorciers, il se retrouve confronté à des épreuves mortelles, des complots sombres et à la résurrection de Lord Voldemort.', 3, 3, 'Harry_potter_4.jpg'),
+	(8, 'Upside Down', '2012', 116, 'Dans un monde où deux planètes coexistent avec des gravités opposées, un homme défie les lois de la physique pour retrouver l\'amour de sa vie, malgré les obstacles et les dangers.', 4, 5, 'Upside_down.jpg'),
+	(9, 'Seul au monde', '2000', 143, 'Après le crash de son avion, un homme se retrouve isolé sur une île déserte, où il doit lutter pour sa survie et trouver un moyen de rentrer chez lui.', 5, 1, 'Seul_au_monde.jpg'),
+	(10, 'Avatar', '2009', 142, 'Parce que l\'atmosphère de Pandora est toxique, les humains ont créé des doubles d\'eux-mêmes, des avatars. Sous cette forme, Jake peut de nouveau marcher.', 6, 5, 'Avatar.jpg'),
+	(11, 'Astérix et Obélix', '2002', 107, 'Cléopâtre, la reine d\'Égypte, décide, pour défier l\'Empereur romain Jules César, de construire en trois mois un palais somptueux en plein désert.', 7, 5, 'Asterix_et_obelix.jpg'),
+	(12, 'Pirates des Caraïbes', '2003', 143, 'Dans la mer des Caraïbes, Jack Sparrow, voit sa vie idyllique basculer le jour où son ennemi, le perfide capitaine Barbossa, lui vole son bateau, le Black Pearl.', 8, 5, 'Pirates_des_caraibes.jpg'),
+	(13, 'Fight club', '1999', 139, 'Le narrateur, sans identité précise, vit seul, travaille seul, dort seul, mange seul ses plateaux-repas pour une personne comme beaucoup d\'autres personnes seules qui connaissent la misère humaine.', 9, 5, 'Fight_club.jpg'),
+	(14, 'Ratatouille', '2007', 111, 'Rémy est un jeune rat qui rêve de devenir un grand chef français. Ni l\'opposition de sa famille, ni le fait d\'être un rongeur dans une profession qui les déteste ne le démotivent.', 10, 4, 'Ratatouille.jpg'),
+	(15, 'L\'homme bicentenaire', '1999', 132, 'En ce début de XXIe siecle, la robotique a fait d\'inportants progrès. La famille Martin peut ainsi faire ll\'acquisition d\'un robot domestique, le NDR-114.', 11, 4, 'Homme_bicentenaire.jpg'),
+	(16, 'Le Roi Lion', '1994', 87, 'Dans la savane d\'Afrique, Simba, un jeu lionceau, fils de Mufasa, découvre son futur royaume, la Terre des Lions sur lequel il régnera.', 12, 5, 'Le_roi_lion.jpg'),
+	(17, 'Le Roi lion 2', '1998', 81, 'Simba et Nala ont maintenant une fille, et rencontre un jeune lion nommé Kovu, ce qu\'elle ne sait pas, c\'est qu\'il est le fils de Zira une servantes de Scar.', 13, 3, 'Le_roi_lion_2.jpg'),
+	(18, 'Metropolis', '2001', 93, 'Metropolis est une mégapole dans uen société  dystopique divisée en une ville haute, où les travailleurs font fonctionner la ville et sont opprimés par la classe dirigeante.', 14, 4, 'Metropolis.png'),
+	(19, 'Scarface', '1983', 170, 'Tony Montana bénéficie d\'une amnistie du gouvernement cubain pour retourner en Floride, il élabore un plan pour élminer un caïd de la pègre.', 15, 5, 'Scarface.jpg');
+
+-- Listage de la structure de table cinema_elan. film_genre
+CREATE TABLE IF NOT EXISTS `film_genre` (
+  `id_genre` int DEFAULT NULL,
+  `id_film` int DEFAULT NULL,
+  KEY `id_genre` (`id_genre`),
+  KEY `id_film` (`id_film`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
+
+-- Listage des données de la table cinema_elan.film_genre : ~11 rows (environ)
+INSERT INTO `film_genre` (`id_genre`, `id_film`) VALUES
+	(1, 53),
+	(2, 53),
+	(2, 54),
+	(6, 54),
+	(8, 54),
+	(3, 2),
+	(2, 2),
+	(1, 1),
+	(2, 1),
+	(5, 3),
+	(2, 3);
 
 -- Listage de la structure de table cinema_elan. genre
 CREATE TABLE IF NOT EXISTS `genre` (
@@ -170,9 +189,9 @@ CREATE TABLE IF NOT EXISTS `genre` (
   `genre_name` varchar(50) DEFAULT NULL,
   `path_img_genre` longtext,
   PRIMARY KEY (`id_genre`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema_elan.genre : ~9 rows (environ)
+-- Listage des données de la table cinema_elan.genre : ~10 rows (environ)
 INSERT INTO `genre` (`id_genre`, `genre_name`, `path_img_genre`) VALUES
 	(1, 'Anime', 'Anime.jpeg'),
 	(2, 'action', 'Action.jpg'),
@@ -182,7 +201,8 @@ INSERT INTO `genre` (`id_genre`, `genre_name`, `path_img_genre`) VALUES
 	(6, 'Drame', 'Drame.jpg'),
 	(7, 'Animation', 'Animation.jpg'),
 	(8, 'Thriller', 'Thriller.jpg'),
-	(9, 'Comédie', 'Comedie.jpg');
+	(9, 'Comédie', 'Comedie.jpg'),
+	(17, 'Disney', '6498c220c7bbd.jpg');
 
 -- Listage de la structure de table cinema_elan. personne
 CREATE TABLE IF NOT EXISTS `personne` (
@@ -192,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `personne` (
   `birthdate` date DEFAULT NULL,
   `sexe` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
   PRIMARY KEY (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 
 -- Listage des données de la table cinema_elan.personne : ~48 rows (environ)
 INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `birthdate`, `sexe`) VALUES
@@ -254,7 +274,7 @@ CREATE TABLE IF NOT EXISTS `realisateur` (
   PRIMARY KEY (`id_realisateur`) USING BTREE,
   KEY `id_personne` (`id_personne`),
   CONSTRAINT `FK_realisateur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_elan.realisateur : ~15 rows (environ)
 INSERT INTO `realisateur` (`id_realisateur`, `biographie`, `path_img_realisateur`, `id_personne`) VALUES
@@ -281,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `description` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
   `path_img_role` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
   PRIMARY KEY (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_elan.role : ~32 rows (environ)
 INSERT INTO `role` (`id_role`, `role_name`, `description`, `path_img_role`) VALUES
