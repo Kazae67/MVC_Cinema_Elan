@@ -31,12 +31,11 @@ $imagePath = 'public/images/imgFilms/';
     <a href="index.php?action=infosFilm&id=<?= $film["id_film"] ?>">
         <div class="film-card">
             <div class="film-card-infos">
-                <span class="film-duree"><?= $duree ?></span>
                 <span><?= "Titre : ".$film["titre_film"] ?></span>
                 <span class="dateSortie"><?="Année : ".$film["date_sortie"] ?></span>
-                <span><?= "Genre : ".ucfirst($film["genre_name"]) ?></span>
+                <span><?= isset($film["genres"]) ? "Genre : ".ucfirst($film["genres"]) : "" ?></span>
+                <span class="film-duree"><?= $duree ?></span> 
             </div>
-
             <!-- IMAGE -->
             <!-- L'image du film est affichée en utilisant le chemin d'accès et le nom de fichier d'image stockés dans les variables. -->
             <img class="image-film" src="<?= $imageSrc ?>" alt="affiche du film <?= $film["titre_film"] ?>">

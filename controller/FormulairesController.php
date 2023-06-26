@@ -237,43 +237,41 @@ class FormulairesController {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Récupération des données du formulaire
             $titre_film = filter_input(INPUT_POST, "titre_film", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $genre_id = filter_input(INPUT_POST, "genre_id", FILTER_SANITIZE_NUMBER_INT);
             $realisateur_id = filter_input(INPUT_POST, "realisateur_id", FILTER_SANITIZE_NUMBER_INT);
             $date_sortie = date("Y", strtotime(filter_input(INPUT_POST, "date_sortie", FILTER_SANITIZE_FULL_SPECIAL_CHARS)));
             $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
             $duree = filter_input(INPUT_POST, "duree", FILTER_SANITIZE_NUMBER_INT);
             $synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_SPECIAL_CHARS);
-
+    
             // Vérification de la présence de l'image
             if (!isset($_FILES['image']) || $_FILES['image']['error'] === UPLOAD_ERR_NO_FILE) {
                 header("Location: index.php?action=ajouterFilm&error=Veuillez sélectionner une image");
                 exit;
             }
-
+    
             // Traitement de l'image
             $file = $_FILES["image"];
             $filename = $file["name"];
             $filePathTemporaire = $file["tmp_name"];
-
+    
             $extension = pathinfo($filename, PATHINFO_EXTENSION);
             $newImageFileName = uniqid() . "." . $extension;
-
+    
             $destinationPath = "public/images/imgFilms/";
             $destinationFile = $destinationPath . $newImageFileName;
-
+    
             // Erreur / Déplacement de l'image vers le dossier de destination
             if (!move_uploaded_file($filePathTemporaire, $destinationFile)) {
                 header("Location: index.php?action=ajouterFilm&error=Une erreur s'est produite lors du téléchargement de l'image");
                 exit;
             }
-
+    
             $pdo = Connect::Connexion();
-            $query = "INSERT INTO film (titre_film, genre_id, realisateur_id, date_sortie, note, duree, synopsis, path_img_film)
-                      VALUES (:titre_film, :genre_id, :realisateur_id, :date_sortie, :note, :duree, :synopsis, :image)";
+            $query = "INSERT INTO film (titre_film, realisateur_id, date_sortie, note, duree, synopsis, path_img_film)
+                      VALUES (:titre_film, :realisateur_id, :date_sortie, :note, :duree, :synopsis, :image)";
             $insertFilmStatement = $pdo->prepare($query);
             $insertFilmStatement->execute([
                 "titre_film" => $titre_film,
-                "genre_id" => $genre_id,
                 "realisateur_id" => $realisateur_id,
                 "date_sortie" => $date_sortie,
                 "note" => $note,
@@ -281,7 +279,20 @@ class FormulairesController {
                 "synopsis" => $synopsis,
                 "image" => $newImageFileName
             ]);
-
+    
+            $filmId = $pdo->lastInsertId();
+    
+            $genres = filter_input(INPUT_POST, "genre_id", FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+            $insertFilmGenreQuery = "INSERT INTO film_genre (id_film, id_genre) VALUES (:id_film, :id_genre)";
+            $insertFilmGenreStatement = $pdo->prepare($insertFilmGenreQuery);
+            
+            foreach ($genres as $genreId) {
+                $insertFilmGenreStatement->execute([
+                    "id_film" => $filmId,
+                    "id_genre" => $genreId
+                ]);
+            }
+    
             // Redirection vers la liste des films 
             header("Location: index.php?action=listFilms");
             exit;
@@ -289,11 +300,11 @@ class FormulairesController {
             $pdo = Connect::Connexion();
             $selectGenresStatement = $pdo->query("SELECT * FROM genre");
             $genres = $selectGenresStatement->fetchAll();
-
+    
             $selectRealisateursStatement = $pdo->query("SELECT r.id_realisateur, p.prenom, p.nom FROM realisateur r
             INNER JOIN personne p ON r.id_personne = p.id_personne");
             $realisateurs = $selectRealisateursStatement->fetchAll();
-
+    
             // Afficher ajouterFilm
             require "view/formulaires/ajouterFilm.php";
         }
@@ -349,4 +360,3 @@ class FormulairesController {
         require "view/formulaires/ajouterCasting.php";
     }
 }
-// SAUVEGARDE

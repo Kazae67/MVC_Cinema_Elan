@@ -37,11 +37,12 @@ class GenresController {
         $genre_infos = $request_genre_infos->fetch();
 
         $query_genre_list_films = "
-            SELECT f.titre_film, f.date_sortie, f.duree, f.genre_id, g.genre_name, f.id_film, f.path_img_film
-            FROM film f 
-            INNER JOIN genre g ON g.id_genre = f.genre_id
-            WHERE g.id_genre = :id_genre
-            ORDER BY date_sortie DESC
+            SELECT f.titre_film, f.date_sortie, f.duree, g.genre_name, f.id_film, f.path_img_film
+            FROM film_genre fg 
+            INNER JOIN film f ON f.id_film = fg.id_film
+            INNER JOIN genre g ON g.id_genre = fg.id_genre
+            WHERE fg.id_genre = :id_genre
+            ORDER BY f.date_sortie DESC
         ";
         // Récupère la liste des films appartenant au genre
         $request_genre_list_films = $pdo->prepare($query_genre_list_films);

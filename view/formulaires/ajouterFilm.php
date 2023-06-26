@@ -7,13 +7,14 @@
     <label for="titre_film">Titre :</label>
     <input type="text" name="titre_film" id="titre_film" required>
 
-    <!-- GENRE -->
-    <label for="genre_id">Genre :</label>
-    <select name="genre_id" id="genre_id">
-        <?php foreach ($genres as $genre) : ?>
-            <option value="<?php echo $genre['id_genre']; ?>"><?php echo $genre['genre_name']; ?></option>
-        <?php endforeach; ?>
-    </select>
+    <!-- GENRES -->
+    <label for="genre_id">Genres :</label>
+    <?php foreach ($genres as $genre) : ?>
+        <div>
+            <input type="checkbox" id="genre_<?php echo $genre['id_genre']; ?>" name="genre_id[]" value="<?php echo $genre['id_genre']; ?>">
+            <label for="genre_<?php echo $genre['id_genre']; ?>"><?php echo $genre['genre_name']; ?></label>
+        </div>
+    <?php endforeach; ?>
 
     <!-- REALISATEUR -->
     <label for="realisateur_id">Réalisateur :</label>
