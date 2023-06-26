@@ -31,7 +31,7 @@ $imageSrc = $imagePath . $film["path_img_film"];
                     <span class="film-info-left"><b>Réalisateur :</b> <a href="index.php?action=infosRealisateur&id=<?= $film['id_realisateur'] ?>"><?= $film["rea_nom"] . " " . $film["rea_prenom"] ?></a></span>
                     <span class="film-info-right"><b>Genre :</b>
                         <?php
-                        $genres = explode(", ", $film["genres"]);
+                        $genres = explode(" ", $film["genres"]);
                         foreach ($genres as $genre) {
                             echo "<a href='index.php?action=infosGenre&id={$genre}'>" . ucfirst($genre) . "</a> ";
                         }
