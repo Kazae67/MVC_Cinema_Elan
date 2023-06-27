@@ -61,4 +61,18 @@ class FilmsController {
         // Affiche la vue infosFilm.php
         require "view/film/infosFilm.php";
     }
+
+    /* Supprimer un FILM */
+    public function supprimerFilm($id_film) {
+        $pdo = Connect::Connexion();
+
+        // Supprimer le film de la base de données
+        $query = "DELETE FROM film WHERE id_film = :id_film";
+        $statement_delete_film = $pdo->prepare($query);
+        $statement_delete_film->execute(["id_film" => $id_film]);
+
+    
+        header("Location: index.php?action=listFilms");
+        exit(); 
+    }
 }
