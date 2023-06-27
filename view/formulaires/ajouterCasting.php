@@ -36,9 +36,10 @@ ob_start();
     </div>
 
     <!-- BOUTON -->
-    <button type="submit" name="submit" class="btn">Ajouter le casting</button>
+    <button type="submit" name="submit" class="btn" onclick="notificationCasting()">Ajouter le casting</button>
 </form>
 
+<script src="public/js/notificationAjouter.js"></script>
 <?php
 $cssLink = '<link rel="stylesheet" href="public/css/formulaires/formulaires.css">';
 $content = ob_get_clean();

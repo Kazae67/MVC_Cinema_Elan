@@ -1,5 +1,6 @@
 <?php ob_start(); ?>
 
+
 <!-- Ajouter FILM -->
 <form action="index.php?action=ajouterFilm" method="post" enctype="multipart/form-data">
 
@@ -45,9 +46,11 @@
     <input type="file" name="image" id="image" accept="image/*" required>
 
     <!-- BOUTON -->
-    <input type="submit" value="Ajouter">
+    <input type="submit" value="Ajouter" onclick="notificationFilm()">
+
 </form>
 
+<script src="public/js/notificationAjouter.js"></script>
 <?php
 $cssLink = '<link rel="stylesheet" href="public/css/formulaires/formulaires.css">';
 $content = ob_get_clean();

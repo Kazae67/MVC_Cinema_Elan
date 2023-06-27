@@ -14,9 +14,11 @@ ob_start();
     <input type="file" name="image" id="image" required>
 
     <!-- BOUTON -->
-    <input type="submit" name="submit" value="Ajouter le genre">
+    <input type="submit" name="submit" value="Ajouter le genre" onclick="notificationGenre()">
 </form>
 
+
+<script src="public/js/notificationAjouter.js"></script>
 <?php
 $cssLink = '<link rel="stylesheet" href="public/css/formulaires/formulaires.css">';
 $content = ob_get_clean();
