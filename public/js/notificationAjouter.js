@@ -12,3 +12,8 @@ function notificationActeur() {
 function notificationRole() {
   alert("Role ajouté");
 }
+
+// notification d'ajout de réalisateur
+function notificationRealisateur() {
+  alert("Ajout du réalisateur");
+}

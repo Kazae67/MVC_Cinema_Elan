@@ -33,9 +33,10 @@ ob_start();
     <input type="file" name="image" required accept="image/*">
 
     <!-- BOUTON -->
-    <input type="submit" name="submit" value="Ajouter le réalisateur">
+    <input type="submit" name="submit" value="Ajouter le réalisateur" onclick="notificationRealisateur()">
 </form>
 
+<script src="public/js/notificationAjouter.js"></script>
 <?php
 $cssLink = '<link rel="stylesheet" href="public/css/formulaires/formulaires.css">';
 $content = ob_get_clean();
