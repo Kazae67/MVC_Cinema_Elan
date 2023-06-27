@@ -296,14 +296,14 @@ class FormulairesController {
             // Redirection vers la liste des films 
             header("Location: index.php?action=listFilms");
             exit;
-        } else {
-            $pdo = Connect::Connexion();
-            $selectGenresStatement = $pdo->query("SELECT * FROM genre");
-            $genres = $selectGenresStatement->fetchAll();
-    
-            $selectRealisateursStatement = $pdo->query("SELECT r.id_realisateur, p.prenom, p.nom FROM realisateur r
-            INNER JOIN personne p ON r.id_personne = p.id_personne");
-            $realisateurs = $selectRealisateursStatement->fetchAll();
+            } else {
+                $pdo = Connect::Connexion();
+                $selectGenresStatement = $pdo->query("SELECT * FROM genre");
+                $genres = $selectGenresStatement->fetchAll();
+        
+                $selectRealisateursStatement = $pdo->query("SELECT r.id_realisateur, p.prenom, p.nom FROM realisateur r
+                INNER JOIN personne p ON r.id_personne = p.id_personne");
+                $realisateurs = $selectRealisateursStatement->fetchAll();
     
             // Afficher ajouterFilm
             require "view/formulaires/ajouterFilm.php";
