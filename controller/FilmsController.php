@@ -66,13 +66,27 @@ class FilmsController {
     public function supprimerFilm($id_film) {
         $pdo = Connect::Connexion();
 
-        // Supprimer le film de la base de données
-        $query = "DELETE FROM film WHERE id_film = :id_film";
-        $statement_delete_film = $pdo->prepare($query);
-        $statement_delete_film->execute(["id_film" => $id_film]);
+    // Supprimer les entrées correspondantes dans la table casting
+    $query_delete_casting = "DELETE FROM casting WHERE film_id = :id_film";
+    $statement_delete_casting = $pdo->prepare($query_delete_casting);
+    $statement_delete_casting->execute(["id_film" => $id_film]);
 
-    
-        header("Location: index.php?action=listFilms");
-        exit(); 
-    }
+    // Supprimer les entrées correspondantes dans la table film_genre
+    $query_delete_film_genre = "DELETE FROM film_genre WHERE id_film = :id_film";
+    $statement_delete_film_genre = $pdo->prepare($query_delete_film_genre);
+    $statement_delete_film_genre->execute(["id_film" => $id_film]);
+
+    // Supprimer le film de la base de données
+    $query_delete_film = "DELETE FROM film WHERE id_film = :id_film";
+    $statement_delete_film = $pdo->prepare($query_delete_film);
+    $statement_delete_film->execute(["id_film" => $id_film]);
+
+    // Supprimer le réalisateur si aucun autre film ne lui est associé
+    $query_delete_realisateur = "DELETE FROM realisateur WHERE id_realisateur = (SELECT realisateur_id FROM film WHERE id_film = :id_film) AND id_personne NOT IN (SELECT id_personne FROM film WHERE realisateur_id = (SELECT realisateur_id FROM film WHERE id_film = :id_film))";
+    $statement_delete_realisateur = $pdo->prepare($query_delete_realisateur);
+    $statement_delete_realisateur->execute(["id_film" => $id_film]);
+
+    header("Location: index.php?action=listFilms");
+    exit(); 
+}
 }

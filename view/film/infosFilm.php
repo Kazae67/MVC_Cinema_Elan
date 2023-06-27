@@ -104,6 +104,7 @@ $imageSrc = $imagePath . $film["path_img_film"];
     </div>
 </div>
 
+
 <?php
 $content = ob_get_clean();
 $cssLink = '<link rel="stylesheet" href="public/css/film/infosFilm.css">';
