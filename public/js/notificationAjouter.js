@@ -17,3 +17,8 @@ function notificationRole() {
 function notificationRealisateur() {
   alert("Ajout du réalisateur");
 }
+
+// notification d'ajout du genre
+function notificationGenre() {
+  alert("Ajout du genre");
+}
