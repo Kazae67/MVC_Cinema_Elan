@@ -32,10 +32,12 @@ $imageSrc = $imagePath . $film["path_img_film"];
                     <span class="film-info-right"><b>Genre :</b>
                         <?php
                         $genre_ids = explode(",", $film['genre_ids']);
+                        $genres = explode(",", $film['genres']);
+                        
 
                         echo "Genres: ";
-                        foreach ($genre_ids as $genre_id) {
-                            echo "<a href='index.php?action=infosGenre&id={$genre_id}'>" . ucfirst($genre_id) . "</a> ";
+                        for ($i = 0; $i<count($genres);$i++) {
+                            echo "<a href='index.php?action=infosGenre&id=".$genre_ids[$i]."'>" . ucfirst($genres[$i]) . "</a> ";
                         }
                         
                         ?>
