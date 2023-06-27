@@ -28,9 +28,9 @@ CREATE TABLE IF NOT EXISTS `acteur` (
   PRIMARY KEY (`id_acteur`) USING BTREE,
   KEY `id_personne` (`id_personne`),
   CONSTRAINT `FK_acteur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema_elan.acteur : ~34 rows (environ)
+-- Listage des données de la table cinema_elan.acteur : ~33 rows (environ)
 INSERT INTO `acteur` (`id_acteur`, `path_img_acteur`, `biographie`, `id_personne`) VALUES
 	(1, 'Matthew_McConaughey_2019_(48648344772).jpg', 'McConaughey sort diplômé du lycée en 1988. Il fait ensuite un voyage d\'études d\'un an en Australie, avant de retourner au Texas où il s\'inscrit en droit à l\'université du Texas à Austin. Intéressé par le cinéma, il change de cursus et pense devenir réalisateur. Toutefois, c\'est en tant qu\'acteur qu\'il est repéré.', 1),
 	(2, 'Kid sangoku.jpg', NULL, 19),
@@ -65,7 +65,8 @@ INSERT INTO `acteur` (`id_acteur`, `path_img_acteur`, `biographie`, `id_personne
 	(31, 'Mabuse_gip.jpg', 'Rudolf Klein-Rogge était un acteur allemand né le 24 novembre 1885 à Cologne et décédé le 29 mai 1955 à Munich. Il est surtout connu pour ses rôles dans les films du réalisateur allemand Fritz Lang, notamment dans les films "Metropolis" (1927) et "Docteur Mabuse" (1922). Klein-Rogge était un acteur polyvalent qui excellait dans les rôles de méchants et de personnages mystérieux. Il a travaillé avec de nombreux réalisateurs renommés de l\'époque du cinéma muet et est considéré comme l\'un des grands acteurs de cette période. Sa présence à l\'écran, son jeu d\'acteur expressif et son charisme ont contribué à sa renommée dans l\'histoire du cinéma allemand.', 45),
 	(32, '365823.webp', 'Al Pacino est un acteur américain né le 25 avril 1940 à New York. Il est considéré comme l\'un des plus grands acteurs de sa génération. Pacino a connu une carrière prolifique dans le cinéma et le théâtre, et il est connu pour ses performances puissantes et mémorables. Il a joué dans des films emblématiques tels que "Le Parrain", "Scarface" et "Heat". Pacino a reçu de nombreux prix et distinctions au cours de sa carrière, dont un Oscar du meilleur acteur pour son rôle dans "Le Temps d\'un week-end". Il est apprécié pour son intensité, son talent d\'acteur et sa capacité à incarner des personnages complexes. Al Pacino reste une icône du cinéma américain.', 46),
 	(33, 'undefined.webp', 'Michelle Pfeiffer est une actrice et productrice américaine née le 29 avril 1958 à Santa Ana, en Californie. Elle est considérée comme l\'une des actrices les plus talentueuses et polyvalentes de sa génération. Pfeiffer a connu un succès considérable dans les années 1980 et 1990, avec des rôles emblématiques tels que dans "Scarface", "Les Sorcières d\'Eastwick" et "Dangerous Liaisons". Elle a été nominée à plusieurs reprises aux Oscars et a remporté de nombreux prix au cours de sa carrière. Pfeiffer est appréciée pour sa beauté classique, sa présence magnétique à l\'écran et sa capacité à donner vie à des personnages complexes. Elle continue d\'être une actrice respectée et recherchée dans l\'industrie du cinéma.', 47),
-	(88, '649a23ad55285.jpg', 'Je suis un acteur maintenant ', 64);
+	(88, '649a23ad55285.jpg', 'Je suis un acteur maintenant ', 64),
+	(89, '649aa8cf1395b.png', 'azepkazoe', 65);
 
 -- Listage de la structure de table cinema_elan. casting
 CREATE TABLE IF NOT EXISTS `casting` (
@@ -75,15 +76,14 @@ CREATE TABLE IF NOT EXISTS `casting` (
   KEY `FK3_casting_role` (`role_id`),
   KEY `FK1_casting_movie` (`film_id`) USING BTREE,
   KEY `FK2_casting_actor` (`acteur_id`) USING BTREE,
-  CONSTRAINT `FK1_casting_movie` FOREIGN KEY (`film_id`) REFERENCES `film` (`id_film`),
-  CONSTRAINT `FK2_casting_actor` FOREIGN KEY (`acteur_id`) REFERENCES `acteur` (`id_acteur`),
+  CONSTRAINT `FK1_casting_film` FOREIGN KEY (`film_id`) REFERENCES `film` (`id_film`) ON DELETE CASCADE,
+  CONSTRAINT `FK2_casting_acteur` FOREIGN KEY (`acteur_id`) REFERENCES `acteur` (`id_acteur`),
   CONSTRAINT `FK3_casting_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`id_role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_elan.casting : ~44 rows (environ)
 INSERT INTO `casting` (`film_id`, `acteur_id`, `role_id`) VALUES
 	(1, 2, 1),
-	(2, 1, 5),
 	(3, 4, 6),
 	(1, 3, 3),
 	(3, 6, 7),
@@ -125,8 +125,9 @@ INSERT INTO `casting` (`film_id`, `acteur_id`, `role_id`) VALUES
 	(18, 31, 32),
 	(19, 32, 33),
 	(19, 33, 34),
-	(55, 2, 1),
-	(56, 88, 55);
+	(1, 4, 1),
+	(1, 2, 1),
+	(1, 1, 1);
 
 -- Listage de la structure de table cinema_elan. film
 CREATE TABLE IF NOT EXISTS `film` (
@@ -141,12 +142,11 @@ CREATE TABLE IF NOT EXISTS `film` (
   PRIMARY KEY (`id_film`) USING BTREE,
   KEY `FK2_movie_director` (`realisateur_id`) USING BTREE,
   CONSTRAINT `FK2_film_realisateur` FOREIGN KEY (`realisateur_id`) REFERENCES `realisateur` (`id_realisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema_elan.film : ~19 rows (environ)
+-- Listage des données de la table cinema_elan.film : ~17 rows (environ)
 INSERT INTO `film` (`id_film`, `titre_film`, `date_sortie`, `duree`, `synopsis`, `realisateur_id`, `note`, `path_img_film`) VALUES
 	(1, 'Dragonball z : Broly Le super Guerrier', '1993', 152, 'Lorsque le puissant guerrier Saiyan, Broly, est réveillé, Goku et ses amis doivent affronter sa force dévastatrice pour sauver la Terre.', 1, 4, 'Dragonballz.jpg'),
-	(2, 'Interstellar', '2014', 169, 'Dans un futur où la Terre est menacée par une crise alimentaire, un groupe d\'explorateurs se lance dans un voyage interstellaire pour trouver une nouvelle planète habitable.', 2, 2, 'Interstellar.jpg'),
 	(3, 'Harry Potter', '2001', 152, 'Un jeune sorcier découvre qu\'il est le célèbre Harry Potter et entre dans le monde de la magie où il doit affronter le redoutable sorcier, Lord Voldemort.', 3, 5, 'Harry_potter.jpg'),
 	(4, 'Harry Potter II', '2002', 161, 'Harry Potter et ses amis enquêtent sur une série d\'attaques mystérieuses à Poudlard, découvrant l\'existence d\'une redoutable chambre des secrets et affrontant un dangereux monstre qui menace la vie de l\'école.', 3, 5, 'Harry_potter_2.jpg'),
 	(5, 'Harry Potter III', '2005', 144, 'Alors qu\'un dangereux criminel échappe à Azkaban, Harry Potter fait face à de nouveaux mystères et découvre le pouvoir du voyage dans le temps pour sauver ses proches et révéler des vérités sur son passé.', 3, 4, 'Harry_potter_3.jpg'),
@@ -162,9 +162,7 @@ INSERT INTO `film` (`id_film`, `titre_film`, `date_sortie`, `duree`, `synopsis`,
 	(16, 'Le Roi Lion', '1994', 87, 'Dans la savane d\'Afrique, Simba, un jeu lionceau, fils de Mufasa, découvre son futur royaume, la Terre des Lions sur lequel il régnera.', 12, 5, 'Le_roi_lion.jpg'),
 	(17, 'Le Roi lion 2', '1998', 81, 'Simba et Nala ont maintenant une fille, et rencontre un jeune lion nommé Kovu, ce qu\'elle ne sait pas, c\'est qu\'il est le fils de Zira une servantes de Scar.', 13, 3, 'Le_roi_lion_2.jpg'),
 	(18, 'Metropolis', '2001', 93, 'Metropolis est une mégapole dans uen société  dystopique divisée en une ville haute, où les travailleurs font fonctionner la ville et sont opprimés par la classe dirigeante.', 14, 4, 'Metropolis.png'),
-	(19, 'Scarface', '1983', 170, 'Tony Montana bénéficie d\'une amnistie du gouvernement cubain pour retourner en Floride, il élabore un plan pour élminer un caïd de la pègre.', 15, 5, 'Scarface.jpg'),
-	(55, 'Mon Film', '1993', 3, 'Mon film de trois minutes', 15, 3, '649a13a62826c.jpg'),
-	(56, 'Mon premier film', '1993', 120, 'Mon premier film youhou', 30, 5, '649a236b1e704.png');
+	(19, 'Scarface', '1983', 170, 'Tony Montana bénéficie d\'une amnistie du gouvernement cubain pour retourner en Floride, il élabore un plan pour élminer un caïd de la pègre.', 15, 5, 'Scarface.jpg');
 
 -- Listage de la structure de table cinema_elan. film_genre
 CREATE TABLE IF NOT EXISTS `film_genre` (
@@ -176,15 +174,7 @@ CREATE TABLE IF NOT EXISTS `film_genre` (
   CONSTRAINT `FK_film_genre_cinema_elan.genre` FOREIGN KEY (`id_genre`) REFERENCES `genre` (`id_genre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 
--- Listage des données de la table cinema_elan.film_genre : ~3 rows (environ)
-INSERT INTO `film_genre` (`id_genre`, `id_film`) VALUES
-	(3, 2),
-	(2, 2),
-	(4, 2),
-	(1, 56),
-	(2, 56),
-	(3, 56),
-	(4, 56);
+-- Listage des données de la table cinema_elan.film_genre : ~7 rows (environ)
 
 -- Listage de la structure de table cinema_elan. genre
 CREATE TABLE IF NOT EXISTS `genre` (
@@ -192,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `genre` (
   `genre_name` varchar(50) DEFAULT NULL,
   `path_img_genre` longtext,
   PRIMARY KEY (`id_genre`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_elan.genre : ~9 rows (environ)
 INSERT INTO `genre` (`id_genre`, `genre_name`, `path_img_genre`) VALUES
@@ -205,19 +195,20 @@ INSERT INTO `genre` (`id_genre`, `genre_name`, `path_img_genre`) VALUES
 	(7, 'Animation', 'Animation.jpg'),
 	(8, 'Thriller', 'Thriller.jpg'),
 	(9, 'Comédie', 'Comedie.jpg'),
-	(17, 'Disney', '6498c220c7bbd.jpg');
+	(17, 'Disney', '6498c220c7bbd.jpg'),
+	(20, 'Test notification', '649aa9bbb4cf7.png');
 
 -- Listage de la structure de table cinema_elan. personne
 CREATE TABLE IF NOT EXISTS `personne` (
   `id_personne` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(50) COLLATE utf8mb3_bin DEFAULT NULL,
-  `prenom` varchar(50) COLLATE utf8mb3_bin DEFAULT NULL,
+  `nom` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
+  `prenom` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
   `birthdate` date DEFAULT NULL,
   `sexe` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
   PRIMARY KEY (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 
--- Listage des données de la table cinema_elan.personne : ~59 rows (environ)
+-- Listage des données de la table cinema_elan.personne : ~0 rows (environ)
 INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `birthdate`, `sexe`) VALUES
 	(1, 'Matthew', 'McConaughey', '2023-06-25', 'Homme'),
 	(2, 'Daniel', 'Radcliffe', '2020-06-27', 'Homme'),
@@ -268,7 +259,9 @@ INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `birthdate`, `sexe`) VAL
 	(47, 'Michelle', 'Pfeiffer', '2023-06-25', 'Femme'),
 	(48, 'Foy', 'Mackenzie', '2023-06-25', 'Femme'),
 	(63, 'Yasin', 'Akgedik', '1993-08-03', 'Homme'),
-	(64, 'Mon premier', 'Acteur', '1993-08-03', 'Homme');
+	(64, 'Mon premier', 'Acteur', '1993-08-03', 'Homme'),
+	(65, 'test ajout', 'test ajout', '1993-08-03', 'Homme'),
+	(66, 'Ajout notif', 'R&eacute;alisateur', '1993-08-03', 'Homme');
 
 -- Listage de la structure de table cinema_elan. realisateur
 CREATE TABLE IF NOT EXISTS `realisateur` (
@@ -279,7 +272,7 @@ CREATE TABLE IF NOT EXISTS `realisateur` (
   PRIMARY KEY (`id_realisateur`) USING BTREE,
   KEY `id_personne` (`id_personne`),
   CONSTRAINT `FK_realisateur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_elan.realisateur : ~17 rows (environ)
 INSERT INTO `realisateur` (`id_realisateur`, `biographie`, `path_img_realisateur`, `id_personne`) VALUES
@@ -298,7 +291,8 @@ INSERT INTO `realisateur` (`id_realisateur`, `biographie`, `path_img_realisateur
 	(13, 'blabla', 'Darrell Rooney.jpeg', 17),
 	(14, 'Fritz Lang naît dans une famille de la grande bourgeoisie viennoise. \r\nSon père Anton Lang est un architecte réputé. Des études d\'architecture et de peinture, et surtout un long périple autour du monde, constitueront sa formation, jusqu\'à la guerre de 1914. \r\nAu début des années 20, il commence sa carrière de réalisateur dans le cinéma muet à Berlin. \r\nIl travaille alors avec le producteur Erich Pommer et rencontre sa première femme Thea von Harbou, qui participera à l\'écriture de tous ses films allemands jusqu\'à son départ de Berlin en 1933. \r\nSon premier film marquant, Le Métis (1919), malheureusement perdu, met déjà en scène ses thèmes de prédilection : la femme fatale et l\'amour destructeur.\r\n\r\nEntre 1920 et 1933, les films se succèdent constituant une filmographie allemande importante: Les Trois Lumieres, Le Docteur Mabuse (en deux parties), \r\nM le Maudit (son premier film parlant), Les Nibelungen saga épique sur la vie de Siegfried, Metropolis (1926) drame expresionniste sur une société futuriste où l\'homme est asservit représente un film clef de sa carrière, considéré comme son chef d\'oeuvre majeur. \r\nLe Testament du docteur Mabuse établit un parallèle évident entre les pratiques du Docteur Mabuse et son réseau criminel avec les agissements nazis. \r\nLa censure intervient et retire le film de l\'affiche. Goebbels convoque Lang et lui propose de prendre la direction du nouveau studio nazi. \r\nLang décide alors de quitter l\'Allemagne pour Paris, il laisse derrière lui sa femme qui rejoindra peu après le parti nazi.\r\n\r\nIl ne reste qu\'une seule année à Paris et réalise un unique film, Liliom (1934), avec Charles Boyer. \r\nAprès quoi il s\'exile à Hollywood, avec un contrat avec le producteur D. Selznick pour la MGM. En 1935, il obtient la nationalité américaine et débute une nouvelle carrière avec Fury en 1936. \r\nSa filmographie très variée, mélange des genres allant du western (Les Pionniers de la Western Union) au film noir Règlement de comptes) en passant par le film policier (L\' Invraisemblable vérité ) \r\net le film d\'aventures en costumes (Les Contrebandiers de Moonfleet). \r\nPour Lang le cinéma est un moyen d\'explorer la part d\'ombre de la nature humaine. \r\nOn retrouve tout au long de son oeuvre les thèmes de la cruauté, de la peur, de l\'horreur et de la mort.\r\n\r\nEn 1959, il retourne en Allemagne, et réalise ses trois derniers films ( Le Tigre du Bengale, Le Tombeau hindou, et le dernier épisode du Docteur Mabuse en 1960 : Le Diabolique Docteur Mabuse) s\'inspirant des scénarios de Thea Von Harbou alors décédée. \r\nAprès quoi il retourne aux Etats-Unis. \r\nPar la suite, il fait des apparitions remarquées dans Le Mépris de Jean-Luc Godard, en 1963 où il joue son propre rôle, dans 75 years of Cinema Museum, de Roberto Guerra et Elia Herschon (1972) ou The Exiles(1989) de Richard Kaplan (1989).\r\n\r\nUnanimement reconnu, il reçoit de nombreuses distinctions, notamment en France et aux Etats-Unis. Il décède à Beverly Hills le 2 août 1976.\r\n\r\n', 'Fritz Lang.webp', 12),
 	(15, 'Troisième fils d\'un chirurgien orthopédiste et d\'une femme au foyer, Brian De Palma grandit à Philadelphie dans l\'ombre d\'un frère aîné, Bruce, brillant scientifique adulé par la famille. Lui-même doué pour l\'électronique -adolescent, il remporte un concours grâce à un mémoire sur "l\'application de la cybernétique aux équations différentielles"-, il s\'inscrit à la Columbia University de New York. Marqué par la vision, à 18 ans, de Sueurs froides d\'Hitchcock (cinéaste auquel il ne cessera d\'être comparé), il découvre avec émerveillement le monde du spectacle durant ses années de fac.\r\n\r\nAyant acheté pour une poignée de dollars une caméra 16 mm, Brian De Palma signe au début des années 60 une poignée de courts et moyens métrages documentaires et de fiction, dont le remarqué Woton\'s Wake. Etudiant le cinéma au Sarah Lawrence College, il tourne avec ses camarades en 1963 son premier long, The Wedding party avec Robert De Niro, un débutant qu\'il présentera en 1970 à son ami Martin Scorsese. L\'acteur joue aussi dans Greetings et Hi, Mom!, comédies féroces et iconoclastes influencées par la Nouvelle Vague. Le 7e art est pour De Palma un terrain d\'expérimentations formelles tous azimuts, comme en témoigne l\'utilisation, dès Dionysus en 1970, du split screen.\r\n\r\nAprès une première expérience hollywoodienne malheureuse (Get to Know Your Rabbit), De Palma accède à la reconnaissance en 1973 avec Soeurs de sang, thriller d\'épouvante dans lequel il développe deux de ses thèmes fétiches, le double et le voyeurisme (présents notamment dans Body Double en 1985). C\'est le premier d\'une série de films d\'horreur truffés de références -qui lui valent d\'être qualifié de cinéaste "postmoderne"-, tels le psychédélique Phantom of the Paradise (1974) et Carrie au bal du diable (1976), deux films qui remportent le Grand Prix à Avoriaz.\r\n\r\nCinéaste de l\'Obsession (titre d\'un opus de 1977) et de la manipulation (Pulsions, Blow out), De Palma s\'éloigne du fantastique dans les annnées 80. En 1983, il réalise, sur un scénario d\'Oliver Stone, Scarface, relecture du chef d\'oeuvre de Hawks avec Al Pacino en baron de la drogue. Après ce film-culte, il s\'inspire encore de la mythologie des gangsters pour Les Incorruptibles (d\'après la fameuse série), avec Costner et De Niro, qui fait un tabac en salles. Mais un brillant casting ne garantit pas le succès -l\'échec retentissant du Bûcher des vanités le prouve en 1991. En 1993, L\'Impasse, film noir dont le brio est salué par la critique, marque les retrouvailles du cinéaste avec Pacino.\r\n\r\nConsidéré comme un "auteur" à l\'européenne en raison de la dimension personnelle de films conçus au coeur du système, De Palma est sollicité par la star Tom Cruise pour réaliser Mission: impossible (1996), premier volet des aventures de l\'agent Ethan Hunt, dérivées de la série d\'espionnage du même nom. Après ce carton au box-office mondial (qui fera l\'objet de suites tournées par d\'autres metteurs en scène), il signe le plus complexe Snake eyes, nouvelle réflexion sur les faux-semblants. Se plaisant à revisiter les genres (citons aussi le film de guerre avec Outrages en 1990), il s\'essaie en 2000 à la SF avec Mission to Mars, qui déconcerte public et critiques, tout comme Femme Fatale (2002), que ce francophile tourne entre Paris et Cannes. Ces revers n\'entament en rien son amour du cinéma, qui transparaît dans le troublant Dahlia noir, adaptation du roman d\'Ellroy au casting glamour, présentée à Venise en 2006.\r\n\r\nL\'année suivante, le metteur en scène dirige Redacted. L\'oeuvre est engagée et dénonce le pouvoir médiatique par rapport aux évènements historiques et les mensonges qui peuvent en découler, faussant l\'Histoire en manipulant les images. Bien qu\'ayant reçu le Lion d\'Argent de la mise en scène lors de la 64e Mostra de Venise en 2007, le film est un échec cuisant et vivement critiqué aux USA pour sa façon de dépeindre l\'armée américaine. Suite à cette déconvenue, De Palma reste 5 années sans réaliser. Le cinéaste est de retour en 2012 et trouve des financements franco-allemands pour tourner Passion à Berlin. Le film est un remake du dernier film d\'Alain Corneau, Crime d\'amour, et met en scène Rachel McAdams et Noomi Rapace se livrant à un jeu pervers érotico-sadique.', 'Brian De Palma.jpg', 18),
-	(30, 'Je suis un r&eacute;alisateur', '649a234dd4ada.jpg', 63);
+	(30, 'Je suis un r&eacute;alisateur', '649a234dd4ada.jpg', 63),
+	(31, 'test', '649aa98199da7.png', 66);
 
 -- Listage de la structure de table cinema_elan. role
 CREATE TABLE IF NOT EXISTS `role` (
@@ -307,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `description` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
   `path_img_role` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
   PRIMARY KEY (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_elan.role : ~32 rows (environ)
 INSERT INTO `role` (`id_role`, `role_name`, `description`, `path_img_role`) VALUES
@@ -343,7 +337,8 @@ INSERT INTO `role` (`id_role`, `role_name`, `description`, `path_img_role`) VALU
 	(32, 'Rotwang', 'L’hybride Rotwang (Rudolf Klein-Rogge), met au point un androïde à l’apparence féminine, lequel sera chargé d\'exhorter les ouvriers à se rebeller contre le maître de la cité', 'Rotwang.webp'),
 	(33, 'Tony Montana', 'Antonio « Tony » Montana, dit Scarface, est un héros cinématographique et vidéoludique. Il est le personnage principal des deux films Scarface (surnom qui signifie en anglais « le Balafré »), le premier Scarface de Howard Hawks (1932), le second, Scarface de Brian De Palma, sorti en 1983, ainsi que du jeu vidéo Scarface : The World is Yours (2006).', 'Tony Montana.jpg'),
 	(34, 'Elvira Hancock', 'Elvira Hancock est un personnage fictif du film policier américain Scarface de 1983, interprétée par Michelle Pfeiffer. Cela s\'est avéré être son rôle décisif. Elle est la maîtresse de Frank Lopez (Robert Loggia) et après sa mort, devient l\'épouse de Tony Montana (Al Pacino).', 'Elvira Hancock.jpg'),
-	(55, 'Mon premier role', 'Mon premier role haha', '649a2387b29b3.png');
+	(55, 'Mon premier role', 'Mon premier role haha', '649a2387b29b3.png'),
+	(56, 'test d&#039;ajout notif', 'notifff', '649aa93cb389b.png');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
