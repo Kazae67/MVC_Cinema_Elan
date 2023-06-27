@@ -28,9 +28,9 @@ CREATE TABLE IF NOT EXISTS `acteur` (
   PRIMARY KEY (`id_acteur`) USING BTREE,
   KEY `id_personne` (`id_personne`),
   CONSTRAINT `FK_acteur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema_elan.acteur : ~33 rows (environ)
+-- Listage des données de la table cinema_elan.acteur : ~34 rows (environ)
 INSERT INTO `acteur` (`id_acteur`, `path_img_acteur`, `biographie`, `id_personne`) VALUES
 	(1, 'Matthew_McConaughey_2019_(48648344772).jpg', 'McConaughey sort diplômé du lycée en 1988. Il fait ensuite un voyage d\'études d\'un an en Australie, avant de retourner au Texas où il s\'inscrit en droit à l\'université du Texas à Austin. Intéressé par le cinéma, il change de cursus et pense devenir réalisateur. Toutefois, c\'est en tant qu\'acteur qu\'il est repéré.', 1),
 	(2, 'Kid sangoku.jpg', NULL, 19),
@@ -64,7 +64,8 @@ INSERT INTO `acteur` (`id_acteur`, `path_img_acteur`, `biographie`, `id_personne
 	(30, 'a7mwxoeF34BCxmteoHQSB1ENth0.jpg', 'Brigitte Helm était une actrice allemande née le 17 mars 1906 à Berlin et décédée le 11 juin 1996 à Ascona, en Suisse. Elle est principalement connue pour son rôle dans le film culte de science-fiction "Metropolis" réalisé par Fritz Lang en 1927. Helm a incarné le personnage emblématique de Maria dans le film, où elle a démontré son talent et sa présence à l\'écran. Bien que sa carrière cinématographique n\'ait pas été aussi prolifique après "Metropolis", elle est restée une figure marquante de l\'âge d\'or du cinéma allemand. Brigitte Helm a laissé une empreinte durable dans l\'histoire du cinéma avec son rôle emblématique dans "Metropolis".', 44),
 	(31, 'Mabuse_gip.jpg', 'Rudolf Klein-Rogge était un acteur allemand né le 24 novembre 1885 à Cologne et décédé le 29 mai 1955 à Munich. Il est surtout connu pour ses rôles dans les films du réalisateur allemand Fritz Lang, notamment dans les films "Metropolis" (1927) et "Docteur Mabuse" (1922). Klein-Rogge était un acteur polyvalent qui excellait dans les rôles de méchants et de personnages mystérieux. Il a travaillé avec de nombreux réalisateurs renommés de l\'époque du cinéma muet et est considéré comme l\'un des grands acteurs de cette période. Sa présence à l\'écran, son jeu d\'acteur expressif et son charisme ont contribué à sa renommée dans l\'histoire du cinéma allemand.', 45),
 	(32, '365823.webp', 'Al Pacino est un acteur américain né le 25 avril 1940 à New York. Il est considéré comme l\'un des plus grands acteurs de sa génération. Pacino a connu une carrière prolifique dans le cinéma et le théâtre, et il est connu pour ses performances puissantes et mémorables. Il a joué dans des films emblématiques tels que "Le Parrain", "Scarface" et "Heat". Pacino a reçu de nombreux prix et distinctions au cours de sa carrière, dont un Oscar du meilleur acteur pour son rôle dans "Le Temps d\'un week-end". Il est apprécié pour son intensité, son talent d\'acteur et sa capacité à incarner des personnages complexes. Al Pacino reste une icône du cinéma américain.', 46),
-	(33, 'undefined.webp', 'Michelle Pfeiffer est une actrice et productrice américaine née le 29 avril 1958 à Santa Ana, en Californie. Elle est considérée comme l\'une des actrices les plus talentueuses et polyvalentes de sa génération. Pfeiffer a connu un succès considérable dans les années 1980 et 1990, avec des rôles emblématiques tels que dans "Scarface", "Les Sorcières d\'Eastwick" et "Dangerous Liaisons". Elle a été nominée à plusieurs reprises aux Oscars et a remporté de nombreux prix au cours de sa carrière. Pfeiffer est appréciée pour sa beauté classique, sa présence magnétique à l\'écran et sa capacité à donner vie à des personnages complexes. Elle continue d\'être une actrice respectée et recherchée dans l\'industrie du cinéma.', 47);
+	(33, 'undefined.webp', 'Michelle Pfeiffer est une actrice et productrice américaine née le 29 avril 1958 à Santa Ana, en Californie. Elle est considérée comme l\'une des actrices les plus talentueuses et polyvalentes de sa génération. Pfeiffer a connu un succès considérable dans les années 1980 et 1990, avec des rôles emblématiques tels que dans "Scarface", "Les Sorcières d\'Eastwick" et "Dangerous Liaisons". Elle a été nominée à plusieurs reprises aux Oscars et a remporté de nombreux prix au cours de sa carrière. Pfeiffer est appréciée pour sa beauté classique, sa présence magnétique à l\'écran et sa capacité à donner vie à des personnages complexes. Elle continue d\'être une actrice respectée et recherchée dans l\'industrie du cinéma.', 47),
+	(88, '649a23ad55285.jpg', 'Je suis un acteur maintenant ', 64);
 
 -- Listage de la structure de table cinema_elan. casting
 CREATE TABLE IF NOT EXISTS `casting` (
@@ -79,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `casting` (
   CONSTRAINT `FK3_casting_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`id_role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema_elan.casting : ~43 rows (environ)
+-- Listage des données de la table cinema_elan.casting : ~44 rows (environ)
 INSERT INTO `casting` (`film_id`, `acteur_id`, `role_id`) VALUES
 	(1, 2, 1),
 	(2, 1, 5),
@@ -123,7 +124,9 @@ INSERT INTO `casting` (`film_id`, `acteur_id`, `role_id`) VALUES
 	(18, 30, 31),
 	(18, 31, 32),
 	(19, 32, 33),
-	(19, 33, 34);
+	(19, 33, 34),
+	(55, 2, 1),
+	(56, 88, 55);
 
 -- Listage de la structure de table cinema_elan. film
 CREATE TABLE IF NOT EXISTS `film` (
@@ -138,9 +141,9 @@ CREATE TABLE IF NOT EXISTS `film` (
   PRIMARY KEY (`id_film`) USING BTREE,
   KEY `FK2_movie_director` (`realisateur_id`) USING BTREE,
   CONSTRAINT `FK2_film_realisateur` FOREIGN KEY (`realisateur_id`) REFERENCES `realisateur` (`id_realisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema_elan.film : ~18 rows (environ)
+-- Listage des données de la table cinema_elan.film : ~19 rows (environ)
 INSERT INTO `film` (`id_film`, `titre_film`, `date_sortie`, `duree`, `synopsis`, `realisateur_id`, `note`, `path_img_film`) VALUES
 	(1, 'Dragonball z : Broly Le super Guerrier', '1993', 152, 'Lorsque le puissant guerrier Saiyan, Broly, est réveillé, Goku et ses amis doivent affronter sa force dévastatrice pour sauver la Terre.', 1, 4, 'Dragonballz.jpg'),
 	(2, 'Interstellar', '2014', 169, 'Dans un futur où la Terre est menacée par une crise alimentaire, un groupe d\'explorateurs se lance dans un voyage interstellaire pour trouver une nouvelle planète habitable.', 2, 2, 'Interstellar.jpg'),
@@ -159,29 +162,29 @@ INSERT INTO `film` (`id_film`, `titre_film`, `date_sortie`, `duree`, `synopsis`,
 	(16, 'Le Roi Lion', '1994', 87, 'Dans la savane d\'Afrique, Simba, un jeu lionceau, fils de Mufasa, découvre son futur royaume, la Terre des Lions sur lequel il régnera.', 12, 5, 'Le_roi_lion.jpg'),
 	(17, 'Le Roi lion 2', '1998', 81, 'Simba et Nala ont maintenant une fille, et rencontre un jeune lion nommé Kovu, ce qu\'elle ne sait pas, c\'est qu\'il est le fils de Zira une servantes de Scar.', 13, 3, 'Le_roi_lion_2.jpg'),
 	(18, 'Metropolis', '2001', 93, 'Metropolis est une mégapole dans uen société  dystopique divisée en une ville haute, où les travailleurs font fonctionner la ville et sont opprimés par la classe dirigeante.', 14, 4, 'Metropolis.png'),
-	(19, 'Scarface', '1983', 170, 'Tony Montana bénéficie d\'une amnistie du gouvernement cubain pour retourner en Floride, il élabore un plan pour élminer un caïd de la pègre.', 15, 5, 'Scarface.jpg');
+	(19, 'Scarface', '1983', 170, 'Tony Montana bénéficie d\'une amnistie du gouvernement cubain pour retourner en Floride, il élabore un plan pour élminer un caïd de la pègre.', 15, 5, 'Scarface.jpg'),
+	(55, 'Mon Film', '1993', 3, 'Mon film de trois minutes', 15, 3, '649a13a62826c.jpg'),
+	(56, 'Mon premier film', '1993', 120, 'Mon premier film youhou', 30, 5, '649a236b1e704.png');
 
 -- Listage de la structure de table cinema_elan. film_genre
 CREATE TABLE IF NOT EXISTS `film_genre` (
   `id_genre` int DEFAULT NULL,
   `id_film` int DEFAULT NULL,
   KEY `id_genre` (`id_genre`),
-  KEY `id_film` (`id_film`)
+  KEY `id_film` (`id_film`),
+  CONSTRAINT `FK_film_genre_cinema_elan.film` FOREIGN KEY (`id_film`) REFERENCES `film` (`id_film`),
+  CONSTRAINT `FK_film_genre_cinema_elan.genre` FOREIGN KEY (`id_genre`) REFERENCES `genre` (`id_genre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 
--- Listage des données de la table cinema_elan.film_genre : ~11 rows (environ)
+-- Listage des données de la table cinema_elan.film_genre : ~3 rows (environ)
 INSERT INTO `film_genre` (`id_genre`, `id_film`) VALUES
-	(1, 53),
-	(2, 53),
-	(2, 54),
-	(6, 54),
-	(8, 54),
 	(3, 2),
 	(2, 2),
-	(1, 1),
-	(2, 1),
-	(5, 3),
-	(2, 3);
+	(4, 2),
+	(1, 56),
+	(2, 56),
+	(3, 56),
+	(4, 56);
 
 -- Listage de la structure de table cinema_elan. genre
 CREATE TABLE IF NOT EXISTS `genre` (
@@ -191,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `genre` (
   PRIMARY KEY (`id_genre`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema_elan.genre : ~10 rows (environ)
+-- Listage des données de la table cinema_elan.genre : ~9 rows (environ)
 INSERT INTO `genre` (`id_genre`, `genre_name`, `path_img_genre`) VALUES
 	(1, 'Anime', 'Anime.jpeg'),
 	(2, 'action', 'Action.jpg'),
@@ -212,9 +215,9 @@ CREATE TABLE IF NOT EXISTS `personne` (
   `birthdate` date DEFAULT NULL,
   `sexe` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
   PRIMARY KEY (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 
--- Listage des données de la table cinema_elan.personne : ~48 rows (environ)
+-- Listage des données de la table cinema_elan.personne : ~59 rows (environ)
 INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `birthdate`, `sexe`) VALUES
 	(1, 'Matthew', 'McConaughey', '2023-06-25', 'Homme'),
 	(2, 'Daniel', 'Radcliffe', '2020-06-27', 'Homme'),
@@ -263,7 +266,9 @@ INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `birthdate`, `sexe`) VAL
 	(45, 'Rudolf', 'Klein-Rogge', '2023-06-25', 'Homme'),
 	(46, 'Al', 'Pacino', '2023-06-25', 'Homme'),
 	(47, 'Michelle', 'Pfeiffer', '2023-06-25', 'Femme'),
-	(48, 'Foy', 'Mackenzie', '2023-06-25', 'Femme');
+	(48, 'Foy', 'Mackenzie', '2023-06-25', 'Femme'),
+	(63, 'Yasin', 'Akgedik', '1993-08-03', 'Homme'),
+	(64, 'Mon premier', 'Acteur', '1993-08-03', 'Homme');
 
 -- Listage de la structure de table cinema_elan. realisateur
 CREATE TABLE IF NOT EXISTS `realisateur` (
@@ -274,9 +279,9 @@ CREATE TABLE IF NOT EXISTS `realisateur` (
   PRIMARY KEY (`id_realisateur`) USING BTREE,
   KEY `id_personne` (`id_personne`),
   CONSTRAINT `FK_realisateur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema_elan.realisateur : ~15 rows (environ)
+-- Listage des données de la table cinema_elan.realisateur : ~17 rows (environ)
 INSERT INTO `realisateur` (`id_realisateur`, `biographie`, `path_img_realisateur`, `id_personne`) VALUES
 	(1, 'Akira Toriyama.. Son œuvre la plus célèbre, Dragon Ball, connaît un très grand succès mondial. En 2007, les Japonais le classent troisième « meilleur manga de tous les temps » à l\'occasion du dixième anniversaire du Japan Media Arts Festival, derrière Slam Dunk et JoJo\'s Bizarre Adventure1.', 'Akira Toriyama.jpg', 4),
 	(2, 'Né d\'un père anglais et d\'une mère américaine, Christopher Nolan a commencé dès son plus jeune âge à réaliser des films avec la caméra 8mm de son père, et ce malgré son daltonisme. \r\nSon court métrage en 8mm, Tarantella, est diffusé aux États-Unis sur la chaîne PBS alors qu\'il est encore étudiant en lettres à l\'Université de Londres. \r\nAu milieu des années 90, il tourne en 16 mm deux courts métrages, Larceny et Doodlebug, suivis de son premier long métrage à petit budget et en noir et blanc, Following (1998). \r\nLe succès de cette histoire de voyeurisme, dans différents festivals, permet à Christopher Nolan de réaliser, deux ans plus tard, Memento. \r\nGrâce à une construction ingénieuse (une succession de flash-backs), qui lui vaut une nomination aux Oscars, Memento devient culte. \r\nNolan est alors courtisé par les grands studios américains et, en 2002, il dirige Al Pacino et Robin Williams dans le thriller Insomnia. \r\nDésormais considéré comme rentable par Hollywood et doué d\'un sens artistique original, il est chargé de diriger les nouvelles aventures de Batman, Batman Begins (2005). \r\nAssumant la pression des studios, il redonne un second souffle au héros, en le rendant plus sombre et tourmenté que jamais. \r\nIl choisit Christian Bale pour interpréter l\'homme chauve-souris et renouvelle sa collaboration avec l\'acteur dans son sixième long-métrage, Le Prestige (2006), un thriller mettant en scène la lutte de deux magiciens au début du 20ème siècle. \r\nEntourant chacun de ses films d\'un certain mystère, il ne déroge pas à la règle avec Inception (2010), mêlant thriller et SF au cœur d\'une intrigue se déroulant à l\'intérieur des rêves. \r\nPour ce nouveau long métrage, il débauche Leonardo DiCaprio. Avec ce nouveau succès planétaire (plus de 825 millions de dollars dans le monde), Nolan se dirige ensuite vers la conclusion de sa trilogie Batman, avec The Dark Knight Rises. \r\nReprenant le casting d\'origine, avec des ajouts importants (Marion Cotillard, Anne Hathaway, Joseph Gordon-Levitt), le film confronte Batman au violent Bane (Tom Hardy).\r\nUne fois la trilogie Batman bouclée, il s\'attaque à une autre figure de l\'écurie DC Comics, et pas des moindres : il écrit et produit Man of Steel, une nouvelle adaptation des aventures Superman, mais en confie la réalisation à Zack Snyder. \r\nIl ne retourne derrière la caméra qu\'en 2014, pour réaliser Interstellar, une fable SF pour laquelle il envoie Matthew McConaughey dans l\'espace à la recherche d\'une planète de substitution. \r\nEn 2017, Nolan s\'attaque pour la première fois au film de guerre avec Dunkerque, le récit de la fameuse évacuation des troupes alliées de Dunkerque en mai 1940.\r\nEn 2020 sort Tenet, son nouveau long métrage, après de nombreux reports liés à la pandémie de Covid-19. \r\nCe mystérieux film d\'espionnage, où il est aussi question de renversement temporel, est emmené par John David Washington et Robert Pattinson. \r\nTrois ans plus tard, il revient à la Seconde Guerre mondiale avec le biopic Oppenheimer, centré sur le développement de l\'arme atomique. \r\nPour l\'occasion, il sollicite quelqu\'un qu\'il connaît bien dans la peau du rôle-titre : Cillian Murphy.', 'Christopher Nolan.webp', 1),
@@ -292,7 +297,8 @@ INSERT INTO `realisateur` (`id_realisateur`, `biographie`, `path_img_realisateur
 	(12, 'Rob Minkoff, diplômé en animation de personnages à l\'Université CalArts, entre aux studios Disney au milieu des années quatre-vingt. \r\nAprès avoir officié en tant que responsable de l\'animation sur le dessin animé Basil, détective privé, il participe au développement de La Petite Sirène et de La Belle et la bête.\r\n\r\nEn 1994, Rob Minkoff obtient la consécration en co-réalisant, avec Roger Allers, l\'un des plus beaux succès de la maison Disney : Le Roi lion. En 1999, il réalise seul Stuart Little, \r\nfilm mêlant animation et prises de vue réelles et mettant en vedette une petite souris, qui connaîtra de nouvelles aventures dans Stuart Little 2 trois ans plus tard.\r\n\r\nEn 2003, il s\'éloigne encore un peu plus de l\'animation, tout en restant dans le registre de la comédie familale, avec Le Manoir hanté et les 999 fantômes, \r\ninspiré de la célèbre attraction des Parcs Disney, avec en vedette Eddie Murphy. \r\nIl patiente ensuite cinq années avant de réaliser son long métrage suivant, Le Royaume interdit (2008). \r\nPour l\'occasion, il réunit pour la première fois à l\'écran Jet Li et Jackie Chan dans la Chine médiévale. \r\nIl retrouve l\'année suivante son genre de prédilection, l\'animation, pour Mr. Peabody & Sherman.', 'Rob Minkoff .jpg', 16),
 	(13, 'blabla', 'Darrell Rooney.jpeg', 17),
 	(14, 'Fritz Lang naît dans une famille de la grande bourgeoisie viennoise. \r\nSon père Anton Lang est un architecte réputé. Des études d\'architecture et de peinture, et surtout un long périple autour du monde, constitueront sa formation, jusqu\'à la guerre de 1914. \r\nAu début des années 20, il commence sa carrière de réalisateur dans le cinéma muet à Berlin. \r\nIl travaille alors avec le producteur Erich Pommer et rencontre sa première femme Thea von Harbou, qui participera à l\'écriture de tous ses films allemands jusqu\'à son départ de Berlin en 1933. \r\nSon premier film marquant, Le Métis (1919), malheureusement perdu, met déjà en scène ses thèmes de prédilection : la femme fatale et l\'amour destructeur.\r\n\r\nEntre 1920 et 1933, les films se succèdent constituant une filmographie allemande importante: Les Trois Lumieres, Le Docteur Mabuse (en deux parties), \r\nM le Maudit (son premier film parlant), Les Nibelungen saga épique sur la vie de Siegfried, Metropolis (1926) drame expresionniste sur une société futuriste où l\'homme est asservit représente un film clef de sa carrière, considéré comme son chef d\'oeuvre majeur. \r\nLe Testament du docteur Mabuse établit un parallèle évident entre les pratiques du Docteur Mabuse et son réseau criminel avec les agissements nazis. \r\nLa censure intervient et retire le film de l\'affiche. Goebbels convoque Lang et lui propose de prendre la direction du nouveau studio nazi. \r\nLang décide alors de quitter l\'Allemagne pour Paris, il laisse derrière lui sa femme qui rejoindra peu après le parti nazi.\r\n\r\nIl ne reste qu\'une seule année à Paris et réalise un unique film, Liliom (1934), avec Charles Boyer. \r\nAprès quoi il s\'exile à Hollywood, avec un contrat avec le producteur D. Selznick pour la MGM. En 1935, il obtient la nationalité américaine et débute une nouvelle carrière avec Fury en 1936. \r\nSa filmographie très variée, mélange des genres allant du western (Les Pionniers de la Western Union) au film noir Règlement de comptes) en passant par le film policier (L\' Invraisemblable vérité ) \r\net le film d\'aventures en costumes (Les Contrebandiers de Moonfleet). \r\nPour Lang le cinéma est un moyen d\'explorer la part d\'ombre de la nature humaine. \r\nOn retrouve tout au long de son oeuvre les thèmes de la cruauté, de la peur, de l\'horreur et de la mort.\r\n\r\nEn 1959, il retourne en Allemagne, et réalise ses trois derniers films ( Le Tigre du Bengale, Le Tombeau hindou, et le dernier épisode du Docteur Mabuse en 1960 : Le Diabolique Docteur Mabuse) s\'inspirant des scénarios de Thea Von Harbou alors décédée. \r\nAprès quoi il retourne aux Etats-Unis. \r\nPar la suite, il fait des apparitions remarquées dans Le Mépris de Jean-Luc Godard, en 1963 où il joue son propre rôle, dans 75 years of Cinema Museum, de Roberto Guerra et Elia Herschon (1972) ou The Exiles(1989) de Richard Kaplan (1989).\r\n\r\nUnanimement reconnu, il reçoit de nombreuses distinctions, notamment en France et aux Etats-Unis. Il décède à Beverly Hills le 2 août 1976.\r\n\r\n', 'Fritz Lang.webp', 12),
-	(15, 'Troisième fils d\'un chirurgien orthopédiste et d\'une femme au foyer, Brian De Palma grandit à Philadelphie dans l\'ombre d\'un frère aîné, Bruce, brillant scientifique adulé par la famille. Lui-même doué pour l\'électronique -adolescent, il remporte un concours grâce à un mémoire sur "l\'application de la cybernétique aux équations différentielles"-, il s\'inscrit à la Columbia University de New York. Marqué par la vision, à 18 ans, de Sueurs froides d\'Hitchcock (cinéaste auquel il ne cessera d\'être comparé), il découvre avec émerveillement le monde du spectacle durant ses années de fac.\r\n\r\nAyant acheté pour une poignée de dollars une caméra 16 mm, Brian De Palma signe au début des années 60 une poignée de courts et moyens métrages documentaires et de fiction, dont le remarqué Woton\'s Wake. Etudiant le cinéma au Sarah Lawrence College, il tourne avec ses camarades en 1963 son premier long, The Wedding party avec Robert De Niro, un débutant qu\'il présentera en 1970 à son ami Martin Scorsese. L\'acteur joue aussi dans Greetings et Hi, Mom!, comédies féroces et iconoclastes influencées par la Nouvelle Vague. Le 7e art est pour De Palma un terrain d\'expérimentations formelles tous azimuts, comme en témoigne l\'utilisation, dès Dionysus en 1970, du split screen.\r\n\r\nAprès une première expérience hollywoodienne malheureuse (Get to Know Your Rabbit), De Palma accède à la reconnaissance en 1973 avec Soeurs de sang, thriller d\'épouvante dans lequel il développe deux de ses thèmes fétiches, le double et le voyeurisme (présents notamment dans Body Double en 1985). C\'est le premier d\'une série de films d\'horreur truffés de références -qui lui valent d\'être qualifié de cinéaste "postmoderne"-, tels le psychédélique Phantom of the Paradise (1974) et Carrie au bal du diable (1976), deux films qui remportent le Grand Prix à Avoriaz.\r\n\r\nCinéaste de l\'Obsession (titre d\'un opus de 1977) et de la manipulation (Pulsions, Blow out), De Palma s\'éloigne du fantastique dans les annnées 80. En 1983, il réalise, sur un scénario d\'Oliver Stone, Scarface, relecture du chef d\'oeuvre de Hawks avec Al Pacino en baron de la drogue. Après ce film-culte, il s\'inspire encore de la mythologie des gangsters pour Les Incorruptibles (d\'après la fameuse série), avec Costner et De Niro, qui fait un tabac en salles. Mais un brillant casting ne garantit pas le succès -l\'échec retentissant du Bûcher des vanités le prouve en 1991. En 1993, L\'Impasse, film noir dont le brio est salué par la critique, marque les retrouvailles du cinéaste avec Pacino.\r\n\r\nConsidéré comme un "auteur" à l\'européenne en raison de la dimension personnelle de films conçus au coeur du système, De Palma est sollicité par la star Tom Cruise pour réaliser Mission: impossible (1996), premier volet des aventures de l\'agent Ethan Hunt, dérivées de la série d\'espionnage du même nom. Après ce carton au box-office mondial (qui fera l\'objet de suites tournées par d\'autres metteurs en scène), il signe le plus complexe Snake eyes, nouvelle réflexion sur les faux-semblants. Se plaisant à revisiter les genres (citons aussi le film de guerre avec Outrages en 1990), il s\'essaie en 2000 à la SF avec Mission to Mars, qui déconcerte public et critiques, tout comme Femme Fatale (2002), que ce francophile tourne entre Paris et Cannes. Ces revers n\'entament en rien son amour du cinéma, qui transparaît dans le troublant Dahlia noir, adaptation du roman d\'Ellroy au casting glamour, présentée à Venise en 2006.\r\n\r\nL\'année suivante, le metteur en scène dirige Redacted. L\'oeuvre est engagée et dénonce le pouvoir médiatique par rapport aux évènements historiques et les mensonges qui peuvent en découler, faussant l\'Histoire en manipulant les images. Bien qu\'ayant reçu le Lion d\'Argent de la mise en scène lors de la 64e Mostra de Venise en 2007, le film est un échec cuisant et vivement critiqué aux USA pour sa façon de dépeindre l\'armée américaine. Suite à cette déconvenue, De Palma reste 5 années sans réaliser. Le cinéaste est de retour en 2012 et trouve des financements franco-allemands pour tourner Passion à Berlin. Le film est un remake du dernier film d\'Alain Corneau, Crime d\'amour, et met en scène Rachel McAdams et Noomi Rapace se livrant à un jeu pervers érotico-sadique.', 'Brian De Palma.jpg', 18);
+	(15, 'Troisième fils d\'un chirurgien orthopédiste et d\'une femme au foyer, Brian De Palma grandit à Philadelphie dans l\'ombre d\'un frère aîné, Bruce, brillant scientifique adulé par la famille. Lui-même doué pour l\'électronique -adolescent, il remporte un concours grâce à un mémoire sur "l\'application de la cybernétique aux équations différentielles"-, il s\'inscrit à la Columbia University de New York. Marqué par la vision, à 18 ans, de Sueurs froides d\'Hitchcock (cinéaste auquel il ne cessera d\'être comparé), il découvre avec émerveillement le monde du spectacle durant ses années de fac.\r\n\r\nAyant acheté pour une poignée de dollars une caméra 16 mm, Brian De Palma signe au début des années 60 une poignée de courts et moyens métrages documentaires et de fiction, dont le remarqué Woton\'s Wake. Etudiant le cinéma au Sarah Lawrence College, il tourne avec ses camarades en 1963 son premier long, The Wedding party avec Robert De Niro, un débutant qu\'il présentera en 1970 à son ami Martin Scorsese. L\'acteur joue aussi dans Greetings et Hi, Mom!, comédies féroces et iconoclastes influencées par la Nouvelle Vague. Le 7e art est pour De Palma un terrain d\'expérimentations formelles tous azimuts, comme en témoigne l\'utilisation, dès Dionysus en 1970, du split screen.\r\n\r\nAprès une première expérience hollywoodienne malheureuse (Get to Know Your Rabbit), De Palma accède à la reconnaissance en 1973 avec Soeurs de sang, thriller d\'épouvante dans lequel il développe deux de ses thèmes fétiches, le double et le voyeurisme (présents notamment dans Body Double en 1985). C\'est le premier d\'une série de films d\'horreur truffés de références -qui lui valent d\'être qualifié de cinéaste "postmoderne"-, tels le psychédélique Phantom of the Paradise (1974) et Carrie au bal du diable (1976), deux films qui remportent le Grand Prix à Avoriaz.\r\n\r\nCinéaste de l\'Obsession (titre d\'un opus de 1977) et de la manipulation (Pulsions, Blow out), De Palma s\'éloigne du fantastique dans les annnées 80. En 1983, il réalise, sur un scénario d\'Oliver Stone, Scarface, relecture du chef d\'oeuvre de Hawks avec Al Pacino en baron de la drogue. Après ce film-culte, il s\'inspire encore de la mythologie des gangsters pour Les Incorruptibles (d\'après la fameuse série), avec Costner et De Niro, qui fait un tabac en salles. Mais un brillant casting ne garantit pas le succès -l\'échec retentissant du Bûcher des vanités le prouve en 1991. En 1993, L\'Impasse, film noir dont le brio est salué par la critique, marque les retrouvailles du cinéaste avec Pacino.\r\n\r\nConsidéré comme un "auteur" à l\'européenne en raison de la dimension personnelle de films conçus au coeur du système, De Palma est sollicité par la star Tom Cruise pour réaliser Mission: impossible (1996), premier volet des aventures de l\'agent Ethan Hunt, dérivées de la série d\'espionnage du même nom. Après ce carton au box-office mondial (qui fera l\'objet de suites tournées par d\'autres metteurs en scène), il signe le plus complexe Snake eyes, nouvelle réflexion sur les faux-semblants. Se plaisant à revisiter les genres (citons aussi le film de guerre avec Outrages en 1990), il s\'essaie en 2000 à la SF avec Mission to Mars, qui déconcerte public et critiques, tout comme Femme Fatale (2002), que ce francophile tourne entre Paris et Cannes. Ces revers n\'entament en rien son amour du cinéma, qui transparaît dans le troublant Dahlia noir, adaptation du roman d\'Ellroy au casting glamour, présentée à Venise en 2006.\r\n\r\nL\'année suivante, le metteur en scène dirige Redacted. L\'oeuvre est engagée et dénonce le pouvoir médiatique par rapport aux évènements historiques et les mensonges qui peuvent en découler, faussant l\'Histoire en manipulant les images. Bien qu\'ayant reçu le Lion d\'Argent de la mise en scène lors de la 64e Mostra de Venise en 2007, le film est un échec cuisant et vivement critiqué aux USA pour sa façon de dépeindre l\'armée américaine. Suite à cette déconvenue, De Palma reste 5 années sans réaliser. Le cinéaste est de retour en 2012 et trouve des financements franco-allemands pour tourner Passion à Berlin. Le film est un remake du dernier film d\'Alain Corneau, Crime d\'amour, et met en scène Rachel McAdams et Noomi Rapace se livrant à un jeu pervers érotico-sadique.', 'Brian De Palma.jpg', 18),
+	(30, 'Je suis un r&eacute;alisateur', '649a234dd4ada.jpg', 63);
 
 -- Listage de la structure de table cinema_elan. role
 CREATE TABLE IF NOT EXISTS `role` (
@@ -301,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `description` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
   `path_img_role` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
   PRIMARY KEY (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_elan.role : ~32 rows (environ)
 INSERT INTO `role` (`id_role`, `role_name`, `description`, `path_img_role`) VALUES
@@ -336,7 +342,8 @@ INSERT INTO `role` (`id_role`, `role_name`, `description`, `path_img_role`) VALU
 	(31, 'Maria', 'Maria (Brigitte Helm), une femme de la ville basse, essaie de promouvoir l\'entente entre les classes, et emmène clandestinement des enfants d\'ouvriers visiter la ville haute. ', 'Maria.jpg'),
 	(32, 'Rotwang', 'L’hybride Rotwang (Rudolf Klein-Rogge), met au point un androïde à l’apparence féminine, lequel sera chargé d\'exhorter les ouvriers à se rebeller contre le maître de la cité', 'Rotwang.webp'),
 	(33, 'Tony Montana', 'Antonio « Tony » Montana, dit Scarface, est un héros cinématographique et vidéoludique. Il est le personnage principal des deux films Scarface (surnom qui signifie en anglais « le Balafré »), le premier Scarface de Howard Hawks (1932), le second, Scarface de Brian De Palma, sorti en 1983, ainsi que du jeu vidéo Scarface : The World is Yours (2006).', 'Tony Montana.jpg'),
-	(34, 'Elvira Hancock', 'Elvira Hancock est un personnage fictif du film policier américain Scarface de 1983, interprétée par Michelle Pfeiffer. Cela s\'est avéré être son rôle décisif. Elle est la maîtresse de Frank Lopez (Robert Loggia) et après sa mort, devient l\'épouse de Tony Montana (Al Pacino).', 'Elvira Hancock.jpg');
+	(34, 'Elvira Hancock', 'Elvira Hancock est un personnage fictif du film policier américain Scarface de 1983, interprétée par Michelle Pfeiffer. Cela s\'est avéré être son rôle décisif. Elle est la maîtresse de Frank Lopez (Robert Loggia) et après sa mort, devient l\'épouse de Tony Montana (Al Pacino).', 'Elvira Hancock.jpg'),
+	(55, 'Mon premier role', 'Mon premier role haha', '649a2387b29b3.png');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
