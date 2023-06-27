@@ -7,3 +7,8 @@ function notificationFilm() {
 function notificationActeur() {
   alert("Acteur ajouté");
 }
+
+// notification d'ajout de role
+function notificationRole() {
+  alert("Role ajouté");
+}
