@@ -47,6 +47,10 @@ $imagePath = 'public/images/imgFilms/';
                 <span class="error">Cet acteur n'a joué dans aucun film.</span>
             <?php } ?>
         </div>
+        <!-- bouton de suppression -->
+        <form method="post" action="index.php?action=supprimerActeur&id=<?= $film['id_film'] ?>">
+            <button type="submit" class="btn">Supprimer l'acteur</button>
+        </form>
     </div>
 </div>
 

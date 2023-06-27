@@ -62,7 +62,7 @@ class FilmsController {
         require "view/film/infosFilm.php";
     }
 
-    /* Supprimer un FILM */
+    /* SUPPRIMER FILM */
     public function supprimerFilm($id_film) {
         $pdo = Connect::Connexion();
 
@@ -88,5 +88,5 @@ class FilmsController {
 
     header("Location: index.php?action=listFilms");
     exit(); 
-}
+    }
 }
