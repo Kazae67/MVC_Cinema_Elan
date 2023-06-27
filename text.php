@@ -7,3 +7,8 @@
 
 [FRONT]
 -css compléter
+
+
+INFORMATION
+
+-l'api google map est devenue payante alors nous avons "https://leafletjs.com/"

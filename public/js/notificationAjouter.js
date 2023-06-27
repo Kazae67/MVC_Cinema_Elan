@@ -22,3 +22,8 @@ function notificationRealisateur() {
 function notificationGenre() {
   alert("Ajout du genre");
 }
+
+// notification d'ajout du Casting
+function notificationCasting() {
+  alert("Ajout du casting");
+}
