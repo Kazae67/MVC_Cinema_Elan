@@ -19,7 +19,7 @@ ob_start();
             <a href="index.php?action=infosRole&id=<?= $role["id_role"] ?>">
                 <!-- À l'intérieur de chaque card de rôle, le nom du rôle est affiché -->
                 <div class="role-card-infos">
-                    <span><?= "Role : ".$role["role_name"] ?></span>
+                    <span><?= $role["role_name"] ?></span>
                     <!-- Bouton supprimer -->
                     <a class="delete-role" href="index.php?action=supprimerRole&id=<?= $role["id_role"] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce rôle ?')">Supprimer</a>
                 </div>

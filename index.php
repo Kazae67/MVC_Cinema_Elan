@@ -118,6 +118,9 @@ if (isset($_GET["action"])) {
         case "supprimerRealisateur":
             $RealisateursController->supprimerRealisateur($id);
             break;
+        case "supprimerCasting":
+            $CastingsController->supprimerCasting();
+            break;
     }
 } else {
     // Si aucune action n'est spécifiée, affiche la liste des films par défaut

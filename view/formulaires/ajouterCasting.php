@@ -5,22 +5,22 @@ ob_start();
 <!-- AJOUTER CASTING -->
 <form action="index.php?action=ajouterCasting" method="post">
 
-    <!-- ACTEUR -->
-    <div class="form-group">
-        <label for="acteur_id">Acteur</label>
-        <select name="acteur_id" id="acteur_id" class="form-control">
-        <?php while ($acteur = $requestActeur->fetch(PDO::FETCH_ASSOC)) : ?>
-            <option value="<?= $acteur['id_acteur'] ?>"><?= $acteur['acteurNomComplet'] ?></option>
-        <?php endwhile; ?>
-        </select>
-    </div>
-
     <!-- FILM -->
     <div class="form-group">
         <label for="film_id">Film</label>
         <select name="film_id" id="film_id" class="form-control">
         <?php while ($film = $requestFilm->fetch(PDO::FETCH_ASSOC)) : ?>
             <option value="<?= $film['id_film'] ?>"><?= $film['titre_film'] ?></option>
+        <?php endwhile; ?>
+        </select>
+    </div>
+    
+    <!-- ACTEUR -->
+    <div class="form-group">
+        <label for="acteur_id">Acteur</label>
+        <select name="acteur_id" id="acteur_id" class="form-control">
+        <?php while ($acteur = $requestActeur->fetch(PDO::FETCH_ASSOC)) : ?>
+            <option value="<?= $acteur['id_acteur'] ?>"><?= $acteur['acteurNomComplet'] ?></option>
         <?php endwhile; ?>
         </select>
     </div>

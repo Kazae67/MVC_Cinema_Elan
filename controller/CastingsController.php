@@ -22,5 +22,25 @@ class CastingsController {
         // Affiche la vue listCastings.php
         require "view/casting/listCastings.php";
     }
+    
+    public function supprimerCasting() {
+        // Récupérer les paramètres d'URL
+        $filmId = $_GET['film_id'];
+        $acteurId = $_GET['acteur_id'];
+        $roleId = $_GET['role_id'];
+    
+        // Construire la requête de suppression
+        $pdo = Connect::Connexion();
+        $query = "DELETE FROM casting WHERE film_id = :film_id AND acteur_id = :acteur_id AND role_id = :role_id";
+        $statement = $pdo->prepare($query);
+        $statement->bindParam(':film_id', $filmId);
+        $statement->bindParam(':acteur_id', $acteurId);
+        $statement->bindParam(':role_id', $roleId);
+        $statement->execute();
+    
+        // Rediriger vers la liste des castings après la suppression
+        header("Location: index.php?action=listCastings");
+        exit();
+    }
 
 }

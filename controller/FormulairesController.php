@@ -316,7 +316,7 @@ class FormulairesController {
     
         // Requête pour ACTEUR
         $requestActeur = $pdo->query("
-            SELECT CONCAT(personne.prenom, ' ', personne.nom) AS acteurNomComplet, acteur.id_acteur
+            SELECT CONCAT(personne.nom, ' ', personne.prenom) AS acteurNomComplet, acteur.id_acteur
             FROM acteur
             INNER JOIN personne ON acteur.id_personne = personne.id_personne
         ");

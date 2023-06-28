@@ -19,7 +19,7 @@ ob_start();
             <div class="realisateur-card">
                 <div class="realisateur-card-infos">
                     <!-- À l'intérieur de chaque card de réalisateur, les informations du réalisateur sont affichées -->
-                    <span><?= $realisateur["prenom"]." ".$realisateur["nom"] ?></span>
+                    <span><?= $realisateur["nom"]." ".$realisateur["prenom"] ?></span>
                     <span><?= $realisateur["birthdate"] ?></span>
                     <span><?= $realisateur["sexe"] ?></span>
                 </div>

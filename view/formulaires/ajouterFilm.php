@@ -45,7 +45,7 @@
     <input type="file" name="image" id="image" accept="image/*" required>
 
     <!-- BOUTON -->
-    <input type="submit" value="Ajouter" onclick="notificationFilm()">
+    <input type="submit" value="Ajouter le film" onclick="notificationFilm()">
 
 </form>
 
