@@ -112,6 +112,9 @@ if (isset($_GET["action"])) {
         case "supprimerRole":
             $RolesController->supprimerRole($id);
             break;
+        case "supprimerGenre":
+            $GenresController->supprimerGenre($id);
+            break;
     }
 } else {
     // Si aucune action n'est spécifiée, affiche la liste des films par défaut

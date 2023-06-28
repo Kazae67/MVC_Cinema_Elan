@@ -52,4 +52,27 @@ class GenresController {
         // Affiche la vue infosGenre.php 
         require "view/genre/infosGenre.php"; 
     }
+
+    /* Supprimer un GENRE */
+    public function supprimerGenre($id_genre) {
+        $pdo = Connect::Connexion();
+
+        // Vérifier s'il y a des films associés à ce genre
+        $query_check_films = "SELECT COUNT(*) FROM film_genre WHERE id_genre = :id_genre";
+        $statement_check_films = $pdo->prepare($query_check_films);
+        $statement_check_films->execute(["id_genre" => $id_genre]);
+
+        // Supprimer les entrées dans la table film_genre associées au genre
+        $query_delete_film_genre = "DELETE FROM film_genre WHERE id_genre = :id_genre";
+        $statement_delete_film_genre = $pdo->prepare($query_delete_film_genre);
+        $statement_delete_film_genre->execute(["id_genre" => $id_genre]);
+
+        // Supprimer le genre de la base de données
+        $query_delete_genre = "DELETE FROM genre WHERE id_genre = :id_genre";
+        $statement_delete_genre = $pdo->prepare($query_delete_genre);
+        $statement_delete_genre->execute(["id_genre" => $id_genre]);
+
+        header("Location: index.php?action=listGenres");
+        exit();
+    }
 }

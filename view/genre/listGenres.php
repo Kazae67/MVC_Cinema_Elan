@@ -15,12 +15,12 @@ ob_start();
     <!-- Boucle foreach pour itérer sur chaque genres récupéré à partir de l'objet $request->fetchAll(). 
     Chaque genre est affiché sous forme de card avec un lien vers les informations détaillées du genre. -->
     <?php foreach ($request->fetchAll() as $genre) { ?>
-        <a href="index.php?action=infosGenre&id=<?= $genre["id_genre"] ?>">
-            <div class="genre-card">
+        <div class="genre-card">
+                <a href="index.php?action=infosGenre&id=<?= $genre["id_genre"] ?>">
                 <div class="genre-card-infos">
                     <span><?= ucfirst($genre["genre_name"]) ?></span>
                     <!-- Bouton supprimer -->
-                    <a class="delete-genre" href="index.php?action=supprimerGenre&id_genre=<?= $genre["id_genre"] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce genre ?')">Supprimer</a>
+                    <a class="delete-genre" href="index.php?action=supprimerGenre&id=<?= $genre["id_genre"] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce genre ?')">Supprimer</a>
                 </div>
                 <!-- IMAGE -->
                 <!-- L'image associée au genre est affichée en utilisant les informations du chemin d'accès et du nom de fichier d'image stockées dans les variables. 
@@ -32,6 +32,7 @@ ob_start();
                 ?>
                 <!-- L'image du genre est affichée en utilisant le chemin d'accès et le nom de fichier d'image stockés dans les variables. -->
                 <img class="image-genre" src="<?= $imageUrl ?>" alt="affiche de l'acteur <?= ucfirst($genre["genre_name"]) ?>">
+                <a href="index.php?action=infosGenre&id=<?= $genre["id_genre"] ?>">
             </div>
         </a>
     <?php
