@@ -67,4 +67,22 @@ class RolesController {
         // Affiche la vue infosRole.php 
         require "view/role/infosRole.php"; 
     }
+
+    public function supprimerRole($id_role) {
+        $pdo = Connect::Connexion();
+    
+        // Supprimer les entrées dans la table casting associées au rôle
+        $query_delete_casting = "DELETE FROM casting WHERE role_id = :id_role";
+        $statement_delete_casting = $pdo->prepare($query_delete_casting);
+        $statement_delete_casting->execute(["id_role" => $id_role]);
+    
+        // Supprimer le rôle de la base de données
+        $query_delete_role = "DELETE FROM role WHERE id_role = :id_role";
+        $statement_delete_role = $pdo->prepare($query_delete_role);
+        $statement_delete_role->execute(["id_role" => $id_role]);
+    
+        header("Location: index.php?action=listRoles");
+        exit();
+    }
+    
 }

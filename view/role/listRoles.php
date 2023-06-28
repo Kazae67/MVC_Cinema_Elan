@@ -15,11 +15,13 @@ ob_start();
     <!-- Boucle foreach pour itérer sur chaque rôles récupéré à partir de l'objet $request->fetchAll(). 
     Chaque rôle est affiché sous forme de card avec un lien vers les informations détaillées du rôle. -->
     <?php foreach ($request->fetchAll() as $role): ?>
-        <a href="index.php?action=infosRole&id=<?= $role["id_role"] ?>">
-            <div class="role-card">
+        <div class="role-card">
+            <a href="index.php?action=infosRole&id=<?= $role["id_role"] ?>">
+                <!-- À l'intérieur de chaque card de rôle, le nom du rôle est affiché -->
                 <div class="role-card-infos">
-                    <!-- À l'intérieur de chaque card de rôle, le nom du rôle est affiché -->
                     <span><?= "Role : ".$role["role_name"] ?></span>
+                    <!-- Bouton supprimer -->
+                    <a class="delete-role" href="index.php?action=supprimerRole&id_role=<?= $role["id_role"] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce rôle ?')">Supprimer</a>
                 </div>
                 <!-- IMAGE --> 
                 <!-- L'image associée au rôle est affichée en utilisant les informations du chemin d'accès et du nom de fichier d'image stockées dans les variables. 
@@ -31,8 +33,8 @@ ob_start();
                 ?>
                 <!-- L'image du role est affichée en utilisant le chemin d'accès et le nom de fichier d'image stockés dans les variables. -->
                 <img class="image-role" src="<?= $imageUrl ?>" alt="photo du role <?= ucfirst($role["role_name"]) ?>">
-            </div>
-        </a>
+            </a>
+        </div>
     <?php endforeach; ?>
 </div>
 
