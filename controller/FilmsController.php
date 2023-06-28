@@ -81,7 +81,7 @@ class FilmsController {
         $statement_delete_film = $pdo->prepare($query_delete_film);
         $statement_delete_film->execute(["id_film" => $id_film]);
 
-        // Supprimer le réalisateur si aucun autre film ne lui est associé
+        // Supprimer le réalisateur si aucun autre film ne lui est associé (à voir si je garde)
         $query_delete_realisateur = "DELETE FROM realisateur WHERE id_realisateur = (SELECT realisateur_id FROM film WHERE id_film = :id_film) AND id_personne NOT IN (SELECT id_personne FROM film WHERE realisateur_id = (SELECT realisateur_id FROM film WHERE id_film = :id_film))";
         $statement_delete_realisateur = $pdo->prepare($query_delete_realisateur);
         $statement_delete_realisateur->execute(["id_film" => $id_film]);
