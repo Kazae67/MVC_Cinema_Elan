@@ -310,6 +310,7 @@ class FormulairesController {
         }
     }
 
+    // Ajouter Casting
     public function ajouterCasting()
     {
         $pdo = Connect::Connexion();
