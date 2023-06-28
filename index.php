@@ -105,6 +105,8 @@ if (isset($_GET["action"])) {
             break;
         case "supprimerFilm":
             $FilmsController->supprimerFilm($id);
+        case "supprimerActeur":
+            $ActeursController->supprimerActeur($id);
     }
 } else {
     // Si aucune action n'est spécifiée, affiche la liste des films par défaut

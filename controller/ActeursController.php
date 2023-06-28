@@ -51,4 +51,27 @@ class ActeursController {
         // Affiche la vue infosActeur.php
         require "view/acteur/infosActeur.php"; 
     }
+
+    /* Supprimer un ACTEUR */
+    public function supprimerActeur($id_acteur) {
+        $pdo = Connect::Connexion();
+
+        // Supprimer les entrées dans la table casting
+        $query_delete_casting = "DELETE FROM casting WHERE acteur_id = :id_acteur";
+        $statement_delete_casting = $pdo->prepare($query_delete_casting);
+        $statement_delete_casting->execute(["id_acteur" => $id_acteur]);
+
+        // Supprimer l'acteur de la base de données
+        $query_delete_acteur = "DELETE FROM acteur WHERE id_acteur = :id_acteur";
+        $statement_delete_acteur = $pdo->prepare($query_delete_acteur);
+        $statement_delete_acteur->execute(["id_acteur" => $id_acteur]);
+
+        // Supprimer la personne associée à l'acteur si elle n'est associée à aucun autre acteur
+        $query_delete_personne = "DELETE FROM personne WHERE id_personne = (SELECT id_personne FROM acteur WHERE id_acteur = :id_acteur) AND id_personne NOT IN (SELECT id_personne FROM acteur WHERE id_personne = (SELECT id_personne FROM acteur WHERE id_acteur = :id_acteur))";
+        $statement_delete_personne = $pdo->prepare($query_delete_personne);
+        $statement_delete_personne->execute(["id_acteur" => $id_acteur]);
+
+        header("Location: index.php?action=listActeurs");
+        exit();
+    }
 }
