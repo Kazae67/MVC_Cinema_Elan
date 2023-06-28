@@ -68,6 +68,7 @@ class RolesController {
         require "view/role/infosRole.php"; 
     }
 
+    // Supprimer le Role
     public function supprimerRole($id_role) {
         $pdo = Connect::Connexion();
     
