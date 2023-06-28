@@ -115,8 +115,8 @@ if (isset($_GET["action"])) {
         case "supprimerGenre":
             $GenresController->supprimerGenre($id);
             break;
-        case "supprimerCasting":
-            $CastingsController->supprimerCasting($id);
+        case "supprimerRealisateur":
+            $RealisateursController->supprimerRealisateur($id);
             break;
     }
 } else {

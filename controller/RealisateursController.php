@@ -52,4 +52,23 @@ class RealisateursController {
         // Affiche la vue infosRealisateur.php
         require "view/realisateur/infosRealisateur.php"; 
     }
+
+    // Supprimer un REALISATEUR
+    public function supprimerRealisateur($id_realisateur) {
+        $pdo = Connect::Connexion();
+
+        // Supprimer le réalisateur de la base de données
+        $query_delete_realisateur = "DELETE FROM realisateur WHERE id_realisateur = :id_realisateur";
+        $statement_delete_realisateur = $pdo->prepare($query_delete_realisateur);
+        $statement_delete_realisateur->execute(["id_realisateur" => $id_realisateur]);
+
+        // Supprimer la personne associée au réalisateur si elle n'est associée à aucun autre réalisateur
+        $query_delete_personne = "DELETE FROM personne WHERE id_personne = (SELECT id_personne FROM realisateur WHERE id_realisateur = :id_realisateur) AND id_personne NOT IN (SELECT id_personne FROM realisateur WHERE id_personne = (SELECT id_personne FROM realisateur WHERE id_realisateur = :id_realisateur))";
+        $statement_delete_personne = $pdo->prepare($query_delete_personne);
+        $statement_delete_personne->execute(["id_realisateur" => $id_realisateur]);
+
+        header("Location: index.php?action=listRealisateurs");
+        exit();
+    }
+    
 }

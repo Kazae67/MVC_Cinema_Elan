@@ -68,6 +68,10 @@ $imagePath = 'public/images/imgFilms/';
                 <span class="error">Ce réalisateur n'a réalisé aucun film.</span>
             <?php } ?>
         </div>
+        <!-- bouton de suppression -->
+        <form method="post" action="index.php?action=supprimerRealisateur&id=<?= $realisateur_infos['id_realisateur'] ?>">
+            <button type="submit" class="btn">Supprimer le réalisateur</button>
+        </form>
     </div>
 </div>
 
