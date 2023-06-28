@@ -1,6 +1,5 @@
 <?php ob_start(); ?>
 
-
 <!-- Ajouter FILM -->
 <form action="index.php?action=ajouterFilm" method="post" enctype="multipart/form-data">
 
