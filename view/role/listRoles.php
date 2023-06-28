@@ -21,7 +21,7 @@ ob_start();
                 <div class="role-card-infos">
                     <span><?= "Role : ".$role["role_name"] ?></span>
                     <!-- Bouton supprimer -->
-                    <a class="delete-role" href="index.php?action=supprimerRole&id_role=<?= $role["id_role"] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce rôle ?')">Supprimer</a>
+                    <a class="delete-role" href="index.php?action=supprimerRole&id=<?= $role["id_role"] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce rôle ?')">Supprimer</a>
                 </div>
                 <!-- IMAGE --> 
                 <!-- L'image associée au rôle est affichée en utilisant les informations du chemin d'accès et du nom de fichier d'image stockées dans les variables. 
