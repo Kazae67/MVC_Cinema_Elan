@@ -19,6 +19,8 @@ ob_start();
             <div class="genre-card">
                 <div class="genre-card-infos">
                     <span><?= ucfirst($genre["genre_name"]) ?></span>
+                    <!-- Bouton supprimer -->
+                    <a class="delete-genre" href="index.php?action=supprimerGenre&id_genre=<?= $genre["id_genre"] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce genre ?')">Supprimer</a>
                 </div>
                 <!-- IMAGE -->
                 <!-- L'image associée au genre est affichée en utilisant les informations du chemin d'accès et du nom de fichier d'image stockées dans les variables. 
