@@ -344,16 +344,31 @@ class FormulairesController {
             if ($acteur_id && $film_id && $role_id) {
                 $pdo = Connect::Connexion();
     
-                $insertCastingsStatement = $pdo->prepare("
-                    INSERT INTO casting (acteur_id, film_id, role_id )
-                    VALUES (:acteur_id, :film_id, :role_id)
+                // Vérifier si le casting existe déjà
+                $existingCastingQuery = $pdo->prepare("
+                    SELECT *
+                    FROM casting
+                    WHERE acteur_id = :acteur_id AND film_id = :film_id AND role_id = :role_id
                 ");
     
-                $insertCastingsStatement->execute(["acteur_id" => $acteur_id, "film_id" => $film_id, "role_id" => $role_id]);
+                $existingCastingQuery->execute(["acteur_id" => $acteur_id, "film_id" => $film_id, "role_id" => $role_id]);
+                $existingCasting = $existingCastingQuery->fetch();
     
-                // Redirection vers la liste des castings 
-                header('Location: index.php?action=listCastings');
-                exit();
+                if ($existingCasting) {
+                    // Si le casting existe déjà, afficher message d'alert
+                    echo "<script>alert('Le casting existe déjà et ne peut pas être ajouté.');</script>";
+                } else {
+                    $insertCastingsStatement = $pdo->prepare("
+                        INSERT INTO casting (acteur_id, film_id, role_id)
+                        VALUES (:acteur_id, :film_id, :role_id)
+                    ");
+    
+                    $insertCastingsStatement->execute(["acteur_id" => $acteur_id, "film_id" => $film_id, "role_id" => $role_id]);
+    
+                    // Redirection vers la liste des castings 
+                    header('Location: index.php?action=listCastings');
+                    exit();
+                }
             }
         }
     
