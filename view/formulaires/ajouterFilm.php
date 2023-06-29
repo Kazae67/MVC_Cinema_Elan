@@ -45,26 +45,26 @@
             <label for="genre_id">Genres :</label>
             <?php foreach ($genres as $genre) : ?>
                 <div>
-                    <input type="checkbox" id="genre_<?php echo $genre['id_genre']; ?>" name="genre_id[]" value="<?php echo $genre['id_genre']; ?>" required>
+                    <input type="checkbox" id="genre_<?php echo $genre['id_genre']; ?>" name="genre_id[]" value="<?php echo $genre['id_genre']; ?>">
                     <label for="genre_<?php echo $genre['id_genre']; ?>"><?php echo $genre['genre_name']; ?></label>
                 </div>
             <?php endforeach; ?>
 
             <!-- SYNOPSIS -->
             <label for="synopsis">Synopsis :</label>
-            <textarea name="synopsis" id="synopsis" rows="5" required style="resize: none;"></textarea>
+            <textarea name="synopsis" id="synopsis" rows="5" style="resize: none;"></textarea>
 
             <!-- IMAGE -->
             <input type="file" name="image" id="image" accept="image/*" required>
 
             <!-- BOUTON -->
-            <input type="submit" value="Ajouter le film" onclick="notificationFilm()" class="submit-btn">
+            <input type="submit" value="Ajouter le film" onclick="return notificationFilm()" class="submit-btn">
 
         </form>
     </div>
 </div>
 
-<script src="public/js/notificationAjouter.js"></script>
+<script src="public/js/notificationFilm.js"></script>
 <?php
 $cssLink = '<link rel="stylesheet" href="public/css/formulaires/ajouterFilm.css">';
 $content = ob_get_clean();
