@@ -61,22 +61,24 @@
     vertical-align: top; 
 }
 
+/* form notes */
 .note-input label {
     display: inline-block;
     width: 20px;
-    height: 20px;
+    height: 22px;
     border: 2px solid black;
     border-radius: 50%;
     text-align: center;
     line-height: 20px;
     cursor: pointer;
-    margin-right: 10px;
 }
 
+/* Hover gris sur form note */
 .note-input label:hover {
     background-color: lightgray;
 }
 
+/* background noir & texte blanc quand c'est cliqué */
 .note-input input[type="radio"]:checked + label {
     background-color: black;
     color: white;
@@ -92,7 +94,7 @@
 .container input[type="file"],
 .container input[type="submit"] {
   display: block; 
-  margin: 20px auto 0
+  margin: 0 auto 0
 }
 
 /* Bouton submit */
@@ -106,6 +108,12 @@
     padding: 5px 10px;
     border-radius: 5px;
     text-decoration: none; 
+    margin-top: 30px;
+}
+
+/* Margin-top ajouter image */
+.container input[type="file"] {
+    margin-top:10px;
 }
 
 /* Hover bouton */
