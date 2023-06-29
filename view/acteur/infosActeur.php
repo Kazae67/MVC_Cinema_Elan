@@ -49,10 +49,9 @@ $imagePath = 'public/images/imgFilms/';
         </div>
         <!-- bouton de suppression -->
         <form method="post" action="index.php?action=supprimerActeur&id=<?= $acteur_infos['id_acteur'] ?>">
-            <button type="submit" class="btn">Supprimer l'acteur</button>
+            <button type="submit" class="btn" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet acteur ?')">Supprimer l'acteur</button>
         </form>
     </div>
-    
 </div>
 
 <?php
