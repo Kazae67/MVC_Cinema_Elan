@@ -103,21 +103,27 @@ if (isset($_GET["action"])) {
         case "ajouterCasting":
             $FormulairesController->ajouterCasting();
             break;
+        /* Supprimer un film */
         case "supprimerFilm":
             $FilmsController->supprimerFilm($id);
             break;
+        /* Supprimer un acteur */
         case "supprimerActeur":
             $ActeursController->supprimerActeur($id);
             break;
+        /* Supprimer un rôle */
         case "supprimerRole":
             $RolesController->supprimerRole($id);
             break;
+        /* Supprimer un genre */
         case "supprimerGenre":
             $GenresController->supprimerGenre($id);
             break;
+        /* Supprimer un réalisateur */
         case "supprimerRealisateur":
             $RealisateursController->supprimerRealisateur($id);
             break;
+        /* Supprimer un casting */
         case "supprimerCasting":
             $CastingsController->supprimerCasting();
             break;
