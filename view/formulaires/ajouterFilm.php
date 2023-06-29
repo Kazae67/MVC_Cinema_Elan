@@ -45,11 +45,10 @@
             <label for="genre_id">Genres :</label>
             <?php foreach ($genres as $genre) : ?>
                 <div>
-                    <input type="checkbox" id="genre_<?php echo $genre['id_genre']; ?>" name="genre_id[]" value="<?php echo $genre['id_genre']; ?>">
+                    <input type="checkbox" id="genre_<?php echo $genre['id_genre']; ?>" name="genre_id[]" value="<?php echo $genre['id_genre']; ?>" required>
                     <label for="genre_<?php echo $genre['id_genre']; ?>"><?php echo $genre['genre_name']; ?></label>
                 </div>
             <?php endforeach; ?>
-
 
             <!-- SYNOPSIS -->
             <label for="synopsis">Synopsis :</label>
