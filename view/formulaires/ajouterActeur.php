@@ -22,15 +22,15 @@ ob_start();
 
     <!-- DATE DE NAISSANCE -->
     <label for="birthdate">Date de naissance :</label>
-    <input type="date" name="birthdate" id="birthdate" required>
+    <input type="text" name="birthdate" id="birthdate" pattern="\d{2}/\d{2}/\d{4}" maxlength="10" placeholder="JJ/MM/AAAA" required>
 
     <!-- BIOGRAPHIE -->
     <label for="biographie">Biographie :</label>
-    <textarea name="biographie" id="biographie" rows="5" required></textarea>
+    <textarea name="biographie" id="biographie" rows="5"></textarea>
 
     <!-- IMAGE -->
     <label for="image">Image :</label>
-    <input type="file" name="image" id="image" required accept="image/*">
+    <input type="file" name="image" id="image" accept="image/*">
 
     <!-- BOUTON -->
     <button type="submit" name="submit" value="Ajouter l'acteur" onclick="return notificationActeur()">Ajouter l'acteur</button>
