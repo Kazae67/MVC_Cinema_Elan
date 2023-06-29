@@ -14,7 +14,7 @@ ob_start();
     <input type="file" name="image" id="image" required>
 
     <!-- BOUTON -->
-    <input type="submit" name="submit" value="Ajouter le genre" onclick="notificationGenre()">
+    <button type="submit" name="submit" value="Ajouter le genre" onclick="return notificationGenre()">Ajouter le genre</button>
 </form>
 
 
