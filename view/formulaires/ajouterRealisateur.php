@@ -7,33 +7,33 @@ ob_start();
 
     <!-- NOM -->
     <label for="nom">Nom :</label>
-    <input type="text" name="nom" required>
-
+    <input type="text" name="nom" id="nom" required>
+    
     <!-- PRENOM -->
     <label for="prenom">Prénom :</label>
-    <input type="text" name="prenom" required>
+    <input type="text" name="prenom" id="prenom" required>
     
     <!-- SEXE -->
     <label for="sexe">Sexe :</label>
-    <select name="sexe" required>
+    <select name="sexe" id="sexe" required>
         <option value="Homme">Homme</option>
         <option value="Femme">Femme</option>
     </select>
 
     <!-- DATE DE NAISSANCE -->
-    <label>Date de naissance :</label>
-    <input type="date" name="birthdate" id="birthdate">
+    <label for="birthdate">Date de naissance :</label>
+    <input type="text" name="birthdate" id="birthdate" pattern="\d{2}/\d{2}/\d{4}" maxlength="10" placeholder="JJ/MM/AAAA" required>
 
     <!-- BIOGRAPHIE -->
-    <label>Biographie :</label>
-    <textarea name="biographie" rows="5" required></textarea>
+    <label for="biographie">Biographie :</label>
+    <textarea name="biographie" id="biographie" rows="5"></textarea>
 
     <!-- IMAGE -->
-    <label>Image :</label>
-    <input type="file" name="image" required accept="image/*">
+    <label for="image">Image :</label>
+    <input type="file" name="image" id="image" accept="image/*">
 
     <!-- BOUTON -->
-    <input type="submit" name="submit" value="Ajouter le réalisateur" onclick="notificationRealisateur()">
+    <button type="submit" name="submit" value="Ajouter le réalisateur" onclick="return notificationRealisateur()">Ajouter le réalisateur</button>
 </form>
 
 <script src="public/js/notificationRealisateur.js"></script>
