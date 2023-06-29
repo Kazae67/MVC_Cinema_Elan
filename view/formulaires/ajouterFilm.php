@@ -53,7 +53,7 @@
 
             <!-- SYNOPSIS -->
             <label for="synopsis">Synopsis :</label>
-            <textarea name="synopsis" id="synopsis" rows="5" required></textarea>
+            <textarea name="synopsis" id="synopsis" rows="5" required style="resize: none;"></textarea>
 
             <!-- IMAGE -->
             
