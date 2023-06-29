@@ -1,5 +1,9 @@
 /* Container */
 .container {
+    height: 100vh;
+}
+
+.content {
   width: 500px;
   margin: 0 auto;
   padding: 20px;
