@@ -36,7 +36,7 @@ ob_start();
     </div>
 
     <!-- BOUTON -->
-    <button type="submit" name="submit" class="btn" onclick="notificationCasting()">Ajouter le casting</button>
+    <button type="submit" name="submit" value="Ajouter le casting" onclick="return notificationCasting()">Ajouter le casting</button>
 </form>
 
 <script src="public/js/notificationCasting.js"></script>
