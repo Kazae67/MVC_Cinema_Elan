@@ -56,7 +56,6 @@
             <textarea name="synopsis" id="synopsis" rows="5" required style="resize: none;"></textarea>
 
             <!-- IMAGE -->
-            
             <input type="file" name="image" id="image" accept="image/*" required>
 
             <!-- BOUTON -->

@@ -43,8 +43,6 @@
   margin-top: 10px;
 }
 
-
-
 .container input[name="duree"]{
   width: 100px;
 }
@@ -91,4 +89,22 @@
 .container input[type="submit"] {
   display: block; 
   margin: 20px auto 0
+}
+
+/* Bouton submit */
+.container input[type="submit"] {
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    border : solid 1px black;
+    background-color: green; 
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none; 
+}
+
+/* Hover bouton */
+.container input[type="submit"]:hover {
+    background-color: darkgreen;
 }
