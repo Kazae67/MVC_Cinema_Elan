@@ -49,7 +49,7 @@ $imagePathRole = 'public/images/imgRoles/';
             </div>
             <!-- Ajouter le bouton de suppression avec un lien vers l'action de suppression -->
             <div class="delete-button-container">
-                <a class="delete-button" href="index.php?action=supprimerCasting&film_id=<?= $casting['id_film'] ?>&acteur_id=<?= $casting['id_acteur'] ?>&role_id=<?= $casting['id_role'] ?>">Supprimer</a>
+                <a class="delete-button" href="index.php?action=supprimerCasting&film_id=<?= $casting['id_film'] ?>&acteur_id=<?= $casting['id_acteur'] ?>&role_id=<?= $casting['id_role'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce casting ?')">Supprimer</a>
             </div>
         </div>
     <?php } ?>
