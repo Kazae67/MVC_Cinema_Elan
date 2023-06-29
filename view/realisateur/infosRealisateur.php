@@ -70,7 +70,7 @@ $imagePath = 'public/images/imgFilms/';
         </div>
         <!-- bouton de suppression -->
         <form method="post" action="index.php?action=supprimerRealisateur&id=<?= $realisateur_infos['id_realisateur'] ?>">
-            <button type="submit" class="btn">Supprimer le réalisateur</button>
+            <button type="submit" class="btn" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce réalisateur ?')">Supprimer le réalisateur</button>
         </form>
     </div>
 </div>
