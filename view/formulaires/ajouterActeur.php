@@ -7,33 +7,33 @@ ob_start();
 
     <!-- NOM -->
     <label for="nom">Nom :</label>
-    <input type="text" name="nom" required>
+    <input type="text" name="nom" id="nom" required>
     
     <!-- PRENOM -->
     <label for="prenom">Prénom :</label>
-    <input type="text" name="prenom" required>
+    <input type="text" name="prenom" id="prenom" required>
 
     <!-- SEXE -->
     <label for="sexe">Sexe :</label>
-    <select name="sexe" required>
+    <select name="sexe" id="sexe" required>
         <option value="Homme">Homme</option>
         <option value="Femme">Femme</option>
     </select>
 
     <!-- DATE DE NAISSANCE -->
     <label for="birthdate">Date de naissance :</label>
-    <input type="date" name="birthdate" required>
+    <input type="date" name="birthdate" id="birthdate" required>
 
     <!-- BIOGRAPHIE -->
     <label for="biographie">Biographie :</label>
-    <textarea name="biographie" rows="5" required></textarea>
+    <textarea name="biographie" id="biographie" rows="5" required></textarea>
 
     <!-- IMAGE -->
     <label for="image">Image :</label>
-    <input type="file" name="image" required accept="image/*">
+    <input type="file" name="image" id="image" required accept="image/*">
 
     <!-- BOUTON -->
-    <button type="submit" name="submit" value="Ajouter l'acteur" onclick="notificationActeur()">Ajouter l'acteur</button>
+    <button type="submit" name="submit" value="Ajouter l'acteur" onclick="return notificationActeur()">Ajouter l'acteur</button>
 </form>
 
 <script src="public/js/notificationActeur.js"></script>
