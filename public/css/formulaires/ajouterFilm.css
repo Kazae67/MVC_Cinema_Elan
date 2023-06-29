@@ -1,0 +1,68 @@
+.container {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color:white;
+}
+
+.container label {
+  display: inline-block;
+  width: 100px;
+  vertical-align: top;
+}
+
+.container input[type="text"],
+.container select,
+.container textarea {
+  display: inline-block;
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.container input[name="duree"],
+.container input[name="note"] {
+  width: 100px;
+}
+
+.container input[type="submit"] {
+  margin-top: 20px;
+}
+
+.note-input input[type="radio"] {
+    display: none;
+}
+
+/* Aligner de façon vertical */
+.note-input {
+    display: inline-block;
+    vertical-align: top; 
+  }
+
+.note-input label {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.note-input label:hover {
+    background-color: lightgray;
+}
+
+.note-input input[type="radio"]:checked + label {
+    background-color: black;
+    color: white;
+}
+
+/* Espacement entre les boutons radio et les étiquettes */
+.note-input input[type="radio"],
+.note-input label {
+  margin-right: 30px; 
+}

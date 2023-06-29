@@ -51,12 +51,6 @@
     position: relative;
 }
 
-.casting-card-list{
-    background-color:white;
-    border-radius:10px;
-    border: solid 3px black;
-}
-
 .image-container {
     position: relative;
     width: 100%;
