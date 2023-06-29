@@ -1,3 +1,4 @@
+/* Container */
 .container {
   width: 500px;
   margin: 0 auto;
@@ -5,6 +6,8 @@
   border: 2px solid black;
   border-radius: 10px;
   background-color:white;
+  margin-top: 50px;
+  
 }
 
 .container label {
@@ -21,13 +24,29 @@
   margin-bottom: 10px;
 }
 
-.container input[name="duree"],
-.container input[name="note"] {
-  width: 100px;
+/* Margin sur les notes + texte note */
+.container .note-input {
+    margin-top: 10px;
+}
+.container label[for="note"] {
+    margin-top: 10px;
 }
 
-.container input[type="submit"] {
-  margin-top: 20px;
+/* margin sur genre */
+.container label[for="genre_id"] {
+    margin-top: 10px;
+}
+
+/* margin sur synopsis */
+.container label[for="synopsis"],
+.container textarea[name="synopsis"] {
+  margin-top: 10px;
+}
+
+
+
+.container input[name="duree"]{
+  width: 100px;
 }
 
 .note-input input[type="radio"] {
@@ -38,7 +57,7 @@
 .note-input {
     display: inline-block;
     vertical-align: top; 
-  }
+}
 
 .note-input label {
     display: inline-block;
@@ -64,5 +83,12 @@
 /* Espacement entre les boutons radio et les étiquettes */
 .note-input input[type="radio"],
 .note-input label {
-  margin-right: 30px; 
+  margin-right: 45px; 
+}
+
+/* Afficher les éléments sur une ligne séparée */
+.container input[type="file"],
+.container input[type="submit"] {
+  display: block; 
+  margin: 20px auto 0
 }

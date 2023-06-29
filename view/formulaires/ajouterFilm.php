@@ -19,17 +19,13 @@
 
             <!-- DATE DE SORTIE -->
             <label for="date_sortie">Date :</label>
-            <input type="text" name="date_sortie" id="date_sortie" pattern="\year{4}" placeholder="Année de sortie" required>
+            <input type="text" name="date_sortie" id="date_sortie" pattern="\year{4}" placeholder="Année de sortie" maxlength="4" required>
 
-            <!-- GENRES -->
-            <label for="genre_id">Genres :</label>
-            <?php foreach ($genres as $genre) : ?>
-                <div>
-                    <input type="checkbox" id="genre_<?php echo $genre['id_genre']; ?>" name="genre_id[]" value="<?php echo $genre['id_genre']; ?>">
-                    <label for="genre_<?php echo $genre['id_genre']; ?>"><?php echo $genre['genre_name']; ?></label>
-                </div>
-            <?php endforeach; ?>
-
+            <!-- DURÉE -->
+            <div class="input-group">
+                <label for="duree">Durée :</label>
+                <input type="text" name="duree" id="duree" maxlength="3"  placeholder="En minute" required>
+            </div>
             <!-- NOTE -->
             <label for="note">Note :</label>
             <div class="note-input">
@@ -45,18 +41,22 @@
                 <label for="note-5">5</label>
             </div>
 
-            <!-- DURÉE -->
-            <div class="input-group">
-                <label for="duree">Durée :</label>
-                <input type="number" name="duree" id="duree" min="0" placeholder="En minute" required>
-            </div>
+            <!-- GENRES -->
+            <label for="genre_id">Genres :</label>
+            <?php foreach ($genres as $genre) : ?>
+                <div>
+                    <input type="checkbox" id="genre_<?php echo $genre['id_genre']; ?>" name="genre_id[]" value="<?php echo $genre['id_genre']; ?>">
+                    <label for="genre_<?php echo $genre['id_genre']; ?>"><?php echo $genre['genre_name']; ?></label>
+                </div>
+            <?php endforeach; ?>
+
 
             <!-- SYNOPSIS -->
             <label for="synopsis">Synopsis :</label>
             <textarea name="synopsis" id="synopsis" rows="5" required></textarea>
 
             <!-- IMAGE -->
-            <label for="image">Image :</label>
+            
             <input type="file" name="image" id="image" accept="image/*" required>
 
             <!-- BOUTON -->
