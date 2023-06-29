@@ -19,7 +19,7 @@ ob_start();
     <input type="submit" name="submit" value="Ajouter le rôle" onclick="notificationRole()">
 </form>
 
-<script src="public/js/notificationAjouter.js"></script>
+<script src="public/js/notificationRole.js"></script>
 <?php
 $cssLink = '<link rel="stylesheet" href="public/css/formulaires/formulaires.css">';
 $content = ob_get_clean();

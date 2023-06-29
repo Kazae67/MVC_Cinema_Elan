@@ -18,7 +18,7 @@ ob_start();
 </form>
 
 
-<script src="public/js/notificationAjouter.js"></script>
+<script src="public/js/notificationGenre.js"></script>
 <?php
 $cssLink = '<link rel="stylesheet" href="public/css/formulaires/formulaires.css">';
 $content = ob_get_clean();
