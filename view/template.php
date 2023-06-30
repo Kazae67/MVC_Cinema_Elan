@@ -27,8 +27,8 @@
             <ul class="menu">
                 <li><a href="index.php?action=listFilms">Films</a></li>
                 <li><a href="index.php?action=listActeurs">Acteurs</a></li>
-                <li><a href="index.php?action=listRoles">Rôles</a></li>
                 <li><a href="index.php?action=listRealisateurs">Réalisateurs</a></li>
+                <li><a href="index.php?action=listRoles">Rôles</a></li>
                 <li><a href="index.php?action=listGenres">Genres</a></li>
                 <li><a href="index.php?action=listCastings">Castings</a></li>
                 <!-- Dropdown -->
@@ -38,8 +38,8 @@
                     <ul class="dropdown-menu">
                         <li><a href="index.php?action=ajouterFilm">Ajouter un film</a></li>
                         <li><a href="index.php?action=ajouterActeur">Ajouter un acteur</a></li>
-                        <li><a href="index.php?action=ajouterRole">Ajouter un rôle</a></li>
                         <li><a href="index.php?action=ajouterRealisateur">Ajouter un réalisateur</a></li>
+                        <li><a href="index.php?action=ajouterRole">Ajouter un rôle</a></li>
                         <li><a href="index.php?action=ajouterGenre">Ajouter un genre</a></li>
                         <li><a href="index.php?action=ajouterCasting">Ajouter un casting</a></li>
                     </ul>

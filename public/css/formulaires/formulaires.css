@@ -1,17 +1,18 @@
 /* Container */
 .container {
-    height: 100vh;
+  height: 100vh;
 }
 
 .content {
-  width: 500px;
+  width: 90%;
+  max-width: 500px;
   margin: 0 auto;
   padding: 20px;
   border: 2px solid black;
   border-radius: 10px;
-  background-color:white;
+  background-color: white;
   margin-top: 50px;
-  
+  box-sizing: border-box;
 }
 
 .container label {
@@ -25,23 +26,25 @@
 .container select,
 .container textarea {
   display: inline-block;
-  width: 350px;
+  width: 70%;
+  max-width: 350px;
   margin-bottom: 10px;
+  box-sizing: border-box;
 }
 
 /* Margin sur les notes + texte note */
 .container .note-input {
-    margin-top: 10px;
+  margin-top: 10px;
 }
+
 .container label[for="note"] {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 /* margin sur genre */
 .container label[for="genre_id"] {
-    margin-top: 10px;
+  margin-top: 10px;
 }
-
 
 /* margin sur synopsis */
 .container label[for="synopsis"],
@@ -49,76 +52,95 @@
   margin-top: 10px;
 }
 
-.container input[name="duree"]{
-  width: 100px;
+.container input[name="duree"] {
+  width: 30%;
+  max-width: 100px;
 }
 
 .note-input input[type="radio"] {
-    display: none;
+  display: none;
 }
 
-/* Aligner de façon vertical */
+/* Aligner de façon verticale */
 .note-input {
-    display: inline-block;
-    vertical-align: top; 
+  display: inline-block;
+  vertical-align: top;
 }
 
-/* form notes */
+/* Form notes */
 .note-input label {
-    display: inline-block;
-    width: 20px;
-    height: 22px;
-    border: 2px solid black;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 20px;
-    cursor: pointer;
+  display: inline-block;
+  width: 20px;
+  height: 22px;
+  border: 2px solid black;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  cursor: pointer;
 }
 
 /* Hover gris sur form note */
 .note-input label:hover {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
-/* background noir & texte blanc quand c'est cliqué */
+/* Background noir et texte blanc quand c'est cliqué */
 .note-input input[type="radio"]:checked + label {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
 /* Espacement entre les boutons radio et les étiquettes */
 .note-input input[type="radio"],
 .note-input label {
-  margin-right: 45px; 
+  margin-right: 25px;
 }
 
 /* Afficher les éléments sur une ligne séparée */
 .container input[type="file"],
 .container input[type="submit"] {
-  display: block; 
-  margin: 0 auto 0
+  display: block;
+  margin: 0 auto;
 }
 
 /* Bouton submit */
 .container input[type="submit"] {
-    color: white;
-    font-size: 12px;
-    cursor: pointer;
-    margin-top: 10px;
-    border : solid 1px black;
-    background-color: green; 
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-decoration: none; 
-    margin-top: 30px;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+  border: solid 1px black;
+  background-color: green;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 30px;
 }
 
 /* Margin-top ajouter image */
 .container input[type="file"] {
-    margin-top:10px;
+  margin-top: 10px;
 }
 
 /* Hover bouton */
 .container input[type="submit"]:hover {
-    background-color: darkgreen;
+  background-color: darkgreen;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .container label,
+  .container input[type="textarea"],
+  .container input[type="text"],
+  .container select,
+  .container textarea {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+  }
+  
+  .note-input input[type="radio"],
+  .note-input label {
+      margin-right: 15px;
+  }
 }
