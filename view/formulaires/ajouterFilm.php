@@ -58,7 +58,7 @@
             <input type="file" name="image" id="image" accept="image/*" required>
 
             <!-- BOUTON -->
-            <input type="submit" value="Ajouter le film" onclick="return notificationFilm()" class="submit-btn">
+            <input type="submit" name="submit" value="Ajouter le film" onclick="return notificationFilm()" class="submit-btn">
 
         </form>
     </div>
@@ -66,7 +66,7 @@
 
 <script src="public/js/notificationFilm.js"></script>
 <?php
-$cssLink = '<link rel="stylesheet" href="public/css/formulaires/ajouterFilm.css">';
+$cssLink = '<link rel="stylesheet" href="public/css/formulaires/formulaires.css">';
 $content = ob_get_clean();
 require "view/template.php";
 ?>
