@@ -23,7 +23,7 @@ ob_start();
             </select>
 
             <!-- DATE DE NAISSANCE -->
-            <label for="birthdate">Date de naissance :</label>
+            <label for="birthdate">Naissance :</label>
             <input type="text" name="birthdate" id="birthdate" pattern="\d{2}/\d{2}/\d{4}" maxlength="10" placeholder="JJ/MM/AAAA" required>
 
             <!-- BIOGRAPHIE -->
