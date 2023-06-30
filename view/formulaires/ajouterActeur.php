@@ -34,7 +34,7 @@ ob_start();
             <input type="file" name="image" id="image" accept="image/*">
 
             <!-- BOUTON -->
-            <input type="submit" name="submit" value="Ajouter le film" onclick="return notificationActeur()" class="submit-btn">
+            <input type="submit" name="submit" value="Ajouter l'acteur" onclick="return notificationActeur()" class="submit-btn">
         </form>
     </div>
 </div>
