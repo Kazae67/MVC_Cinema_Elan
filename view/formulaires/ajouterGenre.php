@@ -2,9 +2,9 @@
 ob_start();
 ?>
 
+<!-- Ajouter GENRE -->
 <div class="container">
     <div class="content">
-        <!-- Ajouter GENRE -->
         <form action="index.php?action=ajouterGenre" method="post" enctype="multipart/form-data">
 
             <!-- GENRE -->

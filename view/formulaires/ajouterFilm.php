@@ -1,4 +1,6 @@
-<?php ob_start(); ?>
+<?php 
+ob_start(); 
+?>
 
 <!-- Ajouter FILM -->
 <div class="container">
