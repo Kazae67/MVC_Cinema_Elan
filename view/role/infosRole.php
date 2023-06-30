@@ -33,8 +33,8 @@ $imagePath = 'public/images/imgFilms/';
                     <?php if ($role && isset($role["films"])): ?>
                         <span><b>Films :</b></span>
                         <div class="film-list">
-                            <!-- Parcourt la liste des films -->
-                            <?php foreach ($films as $film): ?>
+                            <!-- Parcourt la liste des films en supprimant les doublons -->
+                            <?php foreach (array_unique($films, SORT_REGULAR) as $film): ?>
                                 <div class="film-item">
                                     <div class="film-container">
                                         <!-- Affiche l'image du film avec le lien vers les informations du film -->

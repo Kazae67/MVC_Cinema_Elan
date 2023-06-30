@@ -36,7 +36,7 @@ function notificationRealisateur() {
     }
   
     // Afficher une alerte de succès
-    var message = "L'acteur a été ajouté avec succès!";
+    var message = "Le réalisateur a été ajouté avec succès!";
     alert(message);
     return true;
   }
