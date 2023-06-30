@@ -3,6 +3,7 @@
   height: 100vh;
 }
 
+/* Content */
 .content {
   width: 90%;
   max-width: 500px;
@@ -15,12 +16,14 @@
   box-sizing: border-box;
 }
 
+/* Labels */
 .container label {
   display: inline-block;
   width: 100px;
   vertical-align: top;
 }
 
+/* Input, Select, Textarea */
 .container input[type="textarea"],
 .container input[type="text"],
 .container select,
@@ -32,42 +35,47 @@
   box-sizing: border-box;
 }
 
-/* Margin sur les notes + texte note */
+/* Notes et Texte Note */
 .container .note-input {
   margin-top: 10px;
+  white-space: nowrap;
 }
 
+/* Label Note */
 .container label[for="note"] {
   margin-top: 10px;
 }
 
-/* margin sur genre */
+/* Margin top des Genres */
 .container label[for="genre_id"] {
+  display: block; /* Ajout de cette propriété */
   margin-top: 10px;
 }
 
-/* margin sur synopsis */
+/* Margin top du Synopsis */
 .container label[for="synopsis"],
 .container textarea[name="synopsis"] {
   margin-top: 10px;
 }
 
+/* Input Durée */
 .container input[name="duree"] {
   width: 30%;
   max-width: 100px;
 }
 
+/* Input Note */
 .note-input input[type="radio"] {
   display: none;
 }
 
-/* Aligner de façon verticale */
+/* Alignement Vertical */
 .note-input {
-  display: inline-block;
-  vertical-align: top;
+  display: inline-flex;
+  align-items: center;
 }
 
-/* Form notes */
+/* Forms des Notes */
 .note-input label {
   display: inline-block;
   width: 20px;
@@ -79,24 +87,24 @@
   cursor: pointer;
 }
 
-/* Hover gris sur form note */
+/* Survol Gris sur le Form Note */
 .note-input label:hover {
   background-color: lightgray;
 }
 
-/* Background noir et texte blanc quand c'est cliqué */
+/* Fond Noir et Texte Blanc lorsque sélectionné dans le Form Note */
 .note-input input[type="radio"]:checked + label {
   background-color: black;
   color: white;
 }
 
-/* Espacement entre les boutons radio et les étiquettes */
+/* Espacement entre les Boutons Radio et les Labels */
 .note-input input[type="radio"],
 .note-input label {
   margin-right: 25px;
 }
 
-/* Afficher les éléments sur une ligne séparée */
+/* Afficher les éléments sur des lignes séparées */
 .container input[type="file"],
 .container input[type="submit"] {
   display: block;
@@ -117,30 +125,38 @@
   margin-top: 30px;
 }
 
-/* Margin-top ajouter image */
+/* Margin top pour l'Input Image */
 .container input[type="file"] {
   margin-top: 10px;
 }
 
-/* Hover bouton */
+/* Effet de Survol sur le Bouton Soumettre */
 .container input[type="submit"]:hover {
   background-color: darkgreen;
 }
 
 /* Responsive */
 @media screen and (max-width: 600px) {
+  /* Styles pour les Labels, les Inputs, les Selects, les Textareas */
   .container label,
   .container input[type="textarea"],
   .container input[type="text"],
   .container select,
   .container textarea {
-      display: block;
-      width: 100%;
-      max-width: 100%;
+    display: block;
+    width: 100%;
+    max-width: 100%;
   }
   
+  /* Styles pour les Boutons Radio et les Labels dans le Form Note */
   .note-input input[type="radio"],
   .note-input label {
-      margin-right: 15px;
+    margin-right: 15px;
+    width: 20px;
+    height: 22px;
+    border: 2px solid black;
+    border-radius: 50%;
+    line-height: 20px;
+    cursor: pointer;
   }
 }
