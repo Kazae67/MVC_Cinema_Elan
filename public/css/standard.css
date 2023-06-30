@@ -1,17 +1,18 @@
 * {
-    margin: 0;
-    padding: 0;
-    color: black;
-    text-decoration: none;
-    list-style: none;
-  }
-
-  *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-main{
-  background-color: #976f72d5;
+  margin: 0;
+  padding: 0;
+  color: black;
+  text-decoration: none;
+  list-style: none;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Gradient */
+main {
+  background: radial-gradient(ellipse at center, #29323c 0%, #000000 100%);
+}
