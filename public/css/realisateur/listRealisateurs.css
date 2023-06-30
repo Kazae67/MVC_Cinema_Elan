@@ -52,3 +52,9 @@
   display: block;
   margin-bottom: 5px;
 }
+
+/* Nombre de réalisateur disponibles */
+.realisateur-count {
+  color: white;
+}
+

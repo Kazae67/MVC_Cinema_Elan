@@ -79,6 +79,13 @@
     transform: translateX(-50%); 
     left: 50%; 
 }
+
 .image-container:hover .casting-info {
     display: block;
+}
+
+
+/* Nombre de casting disponibles */
+.casting-count {
+    color: white;
 }

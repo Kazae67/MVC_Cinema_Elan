@@ -73,3 +73,9 @@
 .role-card .role-card-infos .delete-role:hover {
     background-color: darkred; 
 }
+
+/* Nombre de role disponibles */
+.role-count {
+    color: white;
+  }
+  

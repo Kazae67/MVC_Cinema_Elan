@@ -4,10 +4,10 @@ ob_start();
 ?>
 
 <!-- La variable $liste est définie avec un message indiquant le nombre de réalisateur disponibles. Si le nombre de rôles est supérieur à 1, le texte est au pluriel. -->
-<?php $liste = "Nombre de Réalisateur".($request->rowCount() > 1 ? "s" : "")." disponible".($request->rowCount() > 1 ? "s" : ""); ?>
+<?php $liste = "<span class='realisateur-count'>Nombre de Réalisateur".($request->rowCount() > 1 ? "s" : "")." disponible".($request->rowCount() > 1 ? "s" : ""); ?>
 
 <!-- Afficher le nombre total de réalisateur disponibles en utilisant la fonction rowCount() de l'objet $request. -->
-<p class="row-count-list"> Un total de <?= $request->rowCount() ?> réalisateur<?= ($request->rowCount() > 1) ? "s" : "" ?> disponible<?= ($request->rowCount() > 1) ? "s" : "" ?></p>
+<p class="row-count-list realisateur-count"> Un total de <?= $request->rowCount() ?> réalisateur<?= ($request->rowCount() > 1) ? "s" : "" ?> disponible<?= ($request->rowCount() > 1) ? "s" : "" ?></p>
 
 <!-- LISTE DES CARDS REALISATEUR -->
 <div class="realisateur-card-list">

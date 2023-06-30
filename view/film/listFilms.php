@@ -6,10 +6,10 @@ $imagePath = 'public/images/imgFilms/';
 ?>
 
 <!-- La variable $liste est définie avec un message indiquant le nombre de films disponibles. Si le nombre de films est supérieur à 1, le texte est au pluriel. -->
-<?php $liste = "Nombre de Film".($request->rowCount() > 1 ? "s" : "")." disponible".($request->rowCount() > 1 ? "s" : ""); ?>
+<?php $liste = "<span class='film-count'>Nombre de Film".($request->rowCount() > 1 ? "s" : "")." disponible".($request->rowCount() > 1 ? "s" : "")."</span>"; ?>
 
 <!-- Afficher le nombre total de film disponibles en utilisant la fonction rowCount() de l'objet $request. -->
-<p class="row-count-list"> Un total de <?= $request->rowCount() ?> film<?= ($request->rowCount() > 1) ? "s" : "" ?> disponible<?= ($request->rowCount() > 1) ? "s" : "" ?></p>
+<p class="row-count-list film-count"> Un total de <?= $request->rowCount() ?> film<?= ($request->rowCount() > 1) ? "s" : "" ?> disponible<?= ($request->rowCount() > 1) ? "s" : "" ?></p>
 
 <!-- LISTE DES FILMS -->
 <div class="film-card-list">

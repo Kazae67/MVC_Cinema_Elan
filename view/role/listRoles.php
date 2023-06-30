@@ -4,10 +4,10 @@ ob_start();
 ?>
 
 <!-- La variable $liste est définie avec un message indiquant le nombre de rôles disponibles. Si le nombre de rôles est supérieur à 1, le texte est au pluriel. -->
-<?php $liste = "Nombre de Rôle".($request->rowCount() > 1 ? "s" : "")." disponible".($request->rowCount() > 1 ? "s" : ""); ?>
+<?php $liste = "<span class='role-count'>Nombre de Rôle".($request->rowCount() > 1 ? "s" : "")." disponible".($request->rowCount() > 1 ? "s" : ""); ?>
 
 <!-- Afficher le nombre total de rôles disponibles en utilisant la fonction rowCount() de l'objet $request. -->
-<p class="row-count-list"> Un total de <?= $request->rowCount() ?> rôle<?= ($request->rowCount() > 1) ? "s" : "" ?> disponible<?= ($request->rowCount() > 1) ? "s" : "" ?></p>
+<p class="row-count-list role-count"> Un total de <?= $request->rowCount() ?> rôle<?= ($request->rowCount() > 1) ? "s" : "" ?> disponible<?= ($request->rowCount() > 1) ? "s" : "" ?></p>
 
 <!-- LISTE DES CARDS ROLE -->
 <div class="role-card-list">

@@ -4,10 +4,10 @@ ob_start();
 ?>
 
 <!-- La variable $liste est définie avec un message indiquant le nombre de genres disponibles. Si le nombre de genres est supérieur à 1, le texte est au pluriel. -->
-<?php $liste = "Nombre de Genre".($request->rowCount() > 1 ? "s" : "")." disponible".($request->rowCount() > 1 ? "s" : ""); ?>
+<?php $liste = "<span class='genre-count'>Nombre de Genre".($request->rowCount() > 1 ? "s" : "")." disponible".($request->rowCount() > 1 ? "s" : ""); ?>
 
 <!-- Afficher le nombre total de genre disponibles en utilisant la fonction rowCount() de l'objet $request. -->
-<p class="row-count-list"> Un total de <?= $request->rowCount() ?> genre<?= ($request->rowCount() > 1) ? "s" : "" ?> disponible<?= ($request->rowCount() > 1) ? "s" : "" ?></p>
+<p class="row-count-list genre-count"> Un total de <?= $request->rowCount() ?> genre<?= ($request->rowCount() > 1) ? "s" : "" ?> disponible<?= ($request->rowCount() > 1) ? "s" : "" ?></p>
 
 <!-- LISTE DES CARDS GENRE -->
 <div class="genre-card-list">

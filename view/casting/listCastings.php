@@ -9,10 +9,10 @@ $imagePathRole = 'public/images/imgRoles/';
 ?>
 
 <!-- La variable $liste est définie avec un message indiquant le nombre de castings disponibles. Si le nombre de castings est supérieur à 1, le texte est au pluriel. -->
-<?php $liste = "Nombre de Casting".($request->rowCount() > 1 ? "s" : "")." disponible".($request->rowCount() > 1 ? "s" : ""); ?>
+<?php $liste = "<span class='casting-count'>Nombre de Casting".($request->rowCount() > 1 ? "s" : "")." disponible".($request->rowCount() > 1 ? "s" : ""); ?>
 
 <!-- Afficher le nombre total de casting disponibles en utilisant la fonction rowCount() de l'objet $request. -->
-<p class="row-count-list"> Un total de <?= $request->rowCount() ?> casting<?= ($request->rowCount() > 1) ? "s" : "" ?> disponible<?= ($request->rowCount() > 1) ? "s" : "" ?></p>
+<p class="row-count-list casting-count"> Un total de <?= $request->rowCount() ?> casting<?= ($request->rowCount() > 1) ? "s" : "" ?> disponible<?= ($request->rowCount() > 1) ? "s" : "" ?></p>
 
 <!-- LISTE DES CARDS CASTING -->
 <div class="casting-card-list">

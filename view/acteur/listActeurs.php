@@ -4,10 +4,10 @@ ob_start();
 ?>
 
 <!-- La variable $liste est définie avec un message indiquant le nombre d'acteurs disponibles. Si le nombre d'acteur est supérieur à 1, le texte est au pluriel. -->
-<?php $liste = "Nombre d'Acteur".($request->rowCount() > 1 ? "s" : "")." disponible".($request->rowCount() > 1 ? "s" : ""); ?>
+<?php $liste = "<span class='acteur-count'>Nombre d'Acteur".($request->rowCount() > 1 ? "s" : "")." disponible".($request->rowCount() > 1 ? "s" : "")."</span>"; ?>
 
 <!-- Afficher le nombre total d'acteur disponibles en utilisant la fonction rowCount() de l'objet $request. -->
-<p class="row-count-list"> Un total de <?= $request->rowCount() ?> acteur<?= ($request->rowCount() > 1) ? "s" : "" ?> disponible<?= ($request->rowCount() > 1) ? "s" : "" ?></p>
+<p class="row-count-list acteur-count"> Un total de <?= $request->rowCount() ?> acteur<?= ($request->rowCount() > 1) ? "s" : "" ?> disponible<?= ($request->rowCount() > 1) ? "s" : "" ?></p>
 
 <!-- LISTE DES CARDS ACTEUR -->
 <div class="acteur-card-list">

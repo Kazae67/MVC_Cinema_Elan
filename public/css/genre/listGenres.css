@@ -73,3 +73,8 @@
 .genre-card .genre-card-infos .delete-genre:hover {
   background-color: darkred;
 }
+
+/* Nombre de genre disponibles */
+.genre-count {
+  color: white;
+}
