@@ -20,11 +20,12 @@
   vertical-align: top;
 }
 
+.container input[type="textarea"],
 .container input[type="text"],
 .container select,
 .container textarea {
   display: inline-block;
-  width: 300px;
+  width: 350px;
   margin-bottom: 10px;
 }
 
@@ -120,11 +121,4 @@
 /* Hover bouton */
 .container input[type="submit"]:hover {
     background-color: darkgreen;
-}
-
-/* Container Genre */
-.container input[type="textarea"]{
-  display: inline-block;
-  width: 300px;
-  margin-bottom: 10px;
 }
