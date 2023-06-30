@@ -137,7 +137,7 @@
 
 /* Responsive */
 @media screen and (max-width: 600px) {
-  /* Styles pour les Labels, les Inputs, les Selects, les Textareas */
+  /* Les Labels, les Inputs, les Selects, les Textareas */
   .container label,
   .container input[type="textarea"],
   .container input[type="text"],
@@ -148,7 +148,7 @@
     max-width: 100%;
   }
   
-  /* Styles pour les Boutons Radio et les Labels dans le Form Note */
+  /* Les Boutons Radio et les Labels dans le Form Note */
   .note-input input[type="radio"],
   .note-input label {
     margin-right: 15px;
