@@ -24,7 +24,12 @@
         <nav>
             <!-- LOGO  -->
             <h2 class="logo"><a href="index.php?action=listFilms">Cinema</a></h2>
-            <ul class="menu">
+            <div class="menu-burger" onclick="toggleMenu()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul id="nav-links">
                 <li><a href="index.php?action=listFilms">Films</a></li>
                 <li><a href="index.php?action=listActeurs">Acteurs</a></li>
                 <li><a href="index.php?action=listRealisateurs">Réalisateurs</a></li>
@@ -58,6 +63,12 @@
         </div>
     </main>
 
+    <script>
+        function toggleMenu() {
+            var navLinks = document.getElementById("nav-links");
+            navLinks.classList.toggle("show");
+        }
+    </script>
 </body>
 
 </html>

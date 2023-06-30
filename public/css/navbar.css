@@ -3,6 +3,8 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
+  position: relative;
 }
 
 /* Éléments de la navbar */
@@ -64,4 +66,58 @@ nav ul li a:hover {
 /* Dropdown hover */
 .dropdown:hover .dropdown-menu {
   display: block;
+}
+
+/* menu burger */
+.menu-burger {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute; 
+  left: 10px; 
+  top: 50%; 
+  transform: translateY(-50%);
+}
+
+.menu-burger .line {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav {
+    justify-content: flex-start; 
+  }
+
+  nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  .menu-burger {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  nav ul.show {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    justify-content: center; 
+  }
 }
