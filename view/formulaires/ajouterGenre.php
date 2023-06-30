@@ -2,22 +2,23 @@
 ob_start();
 ?>
 
-<!-- Ajouter GENRE -->
-<form action="index.php?action=ajouterGenre" method="post" enctype="multipart/form-data">
+<div class="container">
+    <div class="content">
+        <!-- Ajouter GENRE -->
+        <form action="index.php?action=ajouterGenre" method="post" enctype="multipart/form-data">
 
-    <!-- GENRE -->
-    <label>Genre :</label>
-    <input type="textarea" name="genre_name" id="genre_name" required>
+            <!-- GENRE -->
+            <label>Genre :</label>
+            <input type="textarea" name="genre_name" id="genre_name" required>
 
-    <!-- IMAGE -->
-    <label>Image :</label>
-    <input type="file" name="image" id="image" required>
+            <!-- IMAGE -->
+            <input type="file" name="image" id="image" required>
 
-    <!-- BOUTON -->
-    <button type="submit" name="submit" value="Ajouter le genre" onclick="return notificationGenre()">Ajouter le genre</button>
-</form>
-
-
+            <!-- BOUTON -->
+            <input type="submit" name="submit" value="Ajouter le genre" onclick="return notificationGenre()" class="submit-btn">
+        </form>
+    </div>
+</div>
 
 <script src="public/js/notificationGenre.js"></script>
 <?php

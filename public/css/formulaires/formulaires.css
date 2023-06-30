@@ -41,6 +41,7 @@
     margin-top: 10px;
 }
 
+
 /* margin sur synopsis */
 .container label[for="synopsis"],
 .container textarea[name="synopsis"] {
@@ -119,4 +120,11 @@
 /* Hover bouton */
 .container input[type="submit"]:hover {
     background-color: darkgreen;
+}
+
+/* Container Genre */
+.container input[type="textarea"]{
+  display: inline-block;
+  width: 300px;
+  margin-bottom: 10px;
 }
