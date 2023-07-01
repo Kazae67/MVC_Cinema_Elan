@@ -133,3 +133,25 @@
     color: red;
     font-weight: bold;
 }
+
+/* Bouton supprimer */
+.delete-director-btn {
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: red;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.delete-director-btn:hover {
+    background-color: darkred;
+}
+
+.delete-director-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -7,13 +7,14 @@ ob_start();
     <div class="content">
         <form action="index.php?action=ajouterRealisateur" method="post" enctype="multipart/form-data">
 
-            <!-- NOM -->
-            <label for="nom">Nom :</label>
-            <input type="text" name="nom" id="nom" required>
             
             <!-- PRENOM -->
             <label for="prenom">Prénom :</label>
             <input type="text" name="prenom" id="prenom" required>
+            
+            <!-- NOM -->
+            <label for="nom">Nom :</label>
+            <input type="text" name="nom" id="nom" required>
             
             <!-- SEXE -->
             <label for="sexe">Sexe :</label>
