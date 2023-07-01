@@ -98,10 +98,11 @@ $imageSrc = $imagePath . $film["path_img_film"];
             <img class="image-film-xl" src="<?= $imageSrc ?>" alt="affiche du film <?= $film["titre_film"] ?>">
         </div>
         <!-- bouton de suppression -->
-        <form method="post" action="index.php?action=supprimerFilm&id=<?= $film['id_film'] ?>">
-            <button type="submit" class="btn" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce film ?')">Supprimer le film</button>
-        
-        </form>
+        <div class="button-container">
+            <form method="post" action="index.php?action=supprimerFilm&id=<?= $film['id_film'] ?>">
+                <button type="submit" class="btn delete-film-btn" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce film ?')">Supprimer le film</button>
+            </form>
+        </div>
     </div>
 </div>
 

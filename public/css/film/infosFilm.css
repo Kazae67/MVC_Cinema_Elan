@@ -84,3 +84,25 @@
 .casting-list li {
     margin-bottom: 0px;
 }
+
+/* Bouton supprimer */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.delete-film-btn {
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: red;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.delete-film-btn:hover {
+    background-color: darkred;
+}
