@@ -28,12 +28,11 @@ CREATE TABLE IF NOT EXISTS `acteur` (
   PRIMARY KEY (`id_acteur`) USING BTREE,
   KEY `id_personne` (`id_personne`),
   CONSTRAINT `FK_acteur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_elan.acteur : ~0 rows (environ)
 INSERT INTO `acteur` (`id_acteur`, `path_img_acteur`, `biographie`, `id_personne`) VALUES
-	(100, '649e8d9bee035.webp', 'Ceci est la biographie de l&#39;acteur', 86),
-	(101, '649e8e5728dac.jpg', '', 87);
+	(103, '64a010e13ba3f.webp', 'Ceci est la biographie de l&#39;acteur', 90);
 
 -- Listage de la structure de table cinema_elan. casting
 CREATE TABLE IF NOT EXISTS `casting` (
@@ -48,11 +47,9 @@ CREATE TABLE IF NOT EXISTS `casting` (
   CONSTRAINT `FK3_casting_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`id_role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema_elan.casting : ~3 rows (environ)
+-- Listage des données de la table cinema_elan.casting : ~0 rows (environ)
 INSERT INTO `casting` (`film_id`, `acteur_id`, `role_id`) VALUES
-	(91, 100, 63),
-	(91, 101, 63),
-	(91, 101, 64);
+	(96, 103, 65);
 
 -- Listage de la structure de table cinema_elan. film
 CREATE TABLE IF NOT EXISTS `film` (
@@ -67,11 +64,11 @@ CREATE TABLE IF NOT EXISTS `film` (
   PRIMARY KEY (`id_film`) USING BTREE,
   KEY `FK2_movie_director` (`realisateur_id`) USING BTREE,
   CONSTRAINT `FK2_film_realisateur` FOREIGN KEY (`realisateur_id`) REFERENCES `realisateur` (`id_realisateur`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema_elan.film : ~1 rows (environ)
+-- Listage des données de la table cinema_elan.film : ~0 rows (environ)
 INSERT INTO `film` (`id_film`, `titre_film`, `date_sortie`, `duree`, `synopsis`, `realisateur_id`, `note`, `path_img_film`) VALUES
-	(91, 'Titre', '1993', 120, 'Ceci est le synopsis du film', 40, 5, '649e8d10748e2.jpg');
+	(96, 'Titre du film', '1993', 120, 'Ceci est le synopsis du film', 41, 5, '64a01128c6ab2.jpg');
 
 -- Listage de la structure de table cinema_elan. film_genre
 CREATE TABLE IF NOT EXISTS `film_genre` (
@@ -83,9 +80,9 @@ CREATE TABLE IF NOT EXISTS `film_genre` (
   CONSTRAINT `FK_film_genre_cinema_elan.genre` FOREIGN KEY (`id_genre`) REFERENCES `genre` (`id_genre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 
--- Listage des données de la table cinema_elan.film_genre : ~1 rows (environ)
+-- Listage des données de la table cinema_elan.film_genre : ~0 rows (environ)
 INSERT INTO `film_genre` (`id_genre`, `id_film`) VALUES
-	(32, 91);
+	(33, 96);
 
 -- Listage de la structure de table cinema_elan. genre
 CREATE TABLE IF NOT EXISTS `genre` (
@@ -93,11 +90,11 @@ CREATE TABLE IF NOT EXISTS `genre` (
   `genre_name` varchar(50) DEFAULT NULL,
   `path_img_genre` longtext,
   PRIMARY KEY (`id_genre`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_elan.genre : ~0 rows (environ)
 INSERT INTO `genre` (`id_genre`, `genre_name`, `path_img_genre`) VALUES
-	(32, 'Fantasy', '649e8ceae1cfe.jpg');
+	(33, 'Fantasy', '64a010b2e3ef6.jpg');
 
 -- Listage de la structure de table cinema_elan. personne
 CREATE TABLE IF NOT EXISTS `personne` (
@@ -107,9 +104,9 @@ CREATE TABLE IF NOT EXISTS `personne` (
   `birthdate` date DEFAULT NULL,
   `sexe` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
   PRIMARY KEY (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 
--- Listage des données de la table cinema_elan.personne : ~68 rows (environ)
+-- Listage des données de la table cinema_elan.personne : ~69 rows (environ)
 INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `birthdate`, `sexe`) VALUES
 	(1, 'Matthew', 'McConaughey', '2023-06-25', 'Homme'),
 	(2, 'Daniel', 'Radcliffe', '2020-06-27', 'Homme'),
@@ -178,7 +175,9 @@ INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `birthdate`, `sexe`) VAL
 	(85, 'Nom', 'Prenom', '1993-08-03', 'Homme'),
 	(86, 'Nom', 'Prenom', '1993-08-03', 'Homme'),
 	(87, 'Nom 1', 'Prenom 2', '1993-08-03', 'Homme'),
-	(88, 'Nom 2', 'Prenom 2', '1993-08-03', 'Homme');
+	(88, 'Nom 2', 'Prenom 2', '1993-08-03', 'Homme'),
+	(89, 'Nom', 'Prenom', '1993-08-03', 'Homme'),
+	(90, 'Nom', 'Prenom', '1993-08-03', 'Homme');
 
 -- Listage de la structure de table cinema_elan. realisateur
 CREATE TABLE IF NOT EXISTS `realisateur` (
@@ -189,11 +188,11 @@ CREATE TABLE IF NOT EXISTS `realisateur` (
   PRIMARY KEY (`id_realisateur`) USING BTREE,
   KEY `id_personne` (`id_personne`),
   CONSTRAINT `FK_realisateur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table cinema_elan.realisateur : ~1 rows (environ)
 INSERT INTO `realisateur` (`id_realisateur`, `biographie`, `path_img_realisateur`, `id_personne`) VALUES
-	(40, 'Ceci est la biographie du r&eacute;alisateur', '649e8c88d2c69.jpg', 83);
+	(41, 'Ceci est la biographie du r&eacute;alisateur', '64a0104cb7e27.webp', 89);
 
 -- Listage de la structure de table cinema_elan. role
 CREATE TABLE IF NOT EXISTS `role` (
@@ -202,12 +201,11 @@ CREATE TABLE IF NOT EXISTS `role` (
   `description` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
   `path_img_role` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
   PRIMARY KEY (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table cinema_elan.role : ~2 rows (environ)
+-- Listage des données de la table cinema_elan.role : ~0 rows (environ)
 INSERT INTO `role` (`id_role`, `role_name`, `description`, `path_img_role`) VALUES
-	(63, 'Role', 'Ceci est une description du r&ocirc;le', '649e8db3574f6.jpg'),
-	(64, 'Role 1', '', '649e91074b928.jpg');
+	(65, 'Role', 'Ceci est la description du r&ocirc;le', '64a010fa1e633.jpg');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
